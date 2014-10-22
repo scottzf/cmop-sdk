@@ -6,13 +6,15 @@ public class CreateESGEntity {
 	private String esgName;
 	private String policyTypes;
 	private String targetIPs;
+	private String remark;
 
-	public CreateESGEntity(String accessKey, String esgName, String policyTypes, String targetIPs) {
+	public CreateESGEntity(String accessKey, String esgName, String policyTypes, String targetIPs, String remark) {
 		super();
 		this.accessKey = accessKey;
 		this.esgName = esgName;
 		this.policyTypes = policyTypes;
 		this.targetIPs = targetIPs;
+		this.remark = remark;
 	}
 
 	public String getAccessKey() {
@@ -45,6 +47,14 @@ public class CreateESGEntity {
 
 	public void setTargetIPs(String targetIPs) {
 		this.targetIPs = targetIPs;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 }

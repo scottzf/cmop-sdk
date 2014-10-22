@@ -4,13 +4,13 @@ public class AssociateTagEntity {
 
 	private String accessKey;
 	private String tagName;
-	private String serviceName;
+	private String serviceId;
 
-	public AssociateTagEntity(String accessKey, String tagName, String serviceName) {
+	public AssociateTagEntity(String accessKey, String tagName, String serviceId) {
 		super();
 		this.accessKey = accessKey;
 		this.tagName = tagName;
-		this.serviceName = serviceName;
+		this.serviceId = serviceId;
 	}
 
 	public String getAccessKey() {
@@ -29,12 +29,12 @@ public class AssociateTagEntity {
 		this.tagName = tagName;
 	}
 
-	public String getServiceName() {
-		return serviceName;
+	public String getServiceId() {
+		return serviceId;
 	}
 
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 
 }

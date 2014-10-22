@@ -1,15 +1,15 @@
 package com.sobey.sdk.entity;
 
-public class DissociateEIPEntity {
+public class DissociateTagEntity {
 
 	private String accessKey;
-	private String eipName;
+	private String tagName;
 	private String serviceId;
 
-	public DissociateEIPEntity(String accessKey, String eipName, String serviceId) {
+	public DissociateTagEntity(String accessKey, String tagName, String serviceId) {
 		super();
 		this.accessKey = accessKey;
-		this.eipName = eipName;
+		this.tagName = tagName;
 		this.serviceId = serviceId;
 	}
 
@@ -21,12 +21,12 @@ public class DissociateEIPEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getEipName() {
-		return eipName;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setEipName(String eipName) {
-		this.eipName = eipName;
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
 	}
 
 	public String getServiceId() {

@@ -1,16 +1,14 @@
 package com.sobey.sdk.entity;
 
-public class DssociateTagEntity {
+public class DescribeTagEntity {
 
 	private String accessKey;
 	private String tagName;
-	private String serviceName;
 
-	public DssociateTagEntity(String accessKey, String tagName, String serviceName) {
+	public DescribeTagEntity(String accessKey, String tagName) {
 		super();
 		this.accessKey = accessKey;
 		this.tagName = tagName;
-		this.serviceName = serviceName;
 	}
 
 	public String getAccessKey() {
@@ -27,14 +25,6 @@ public class DssociateTagEntity {
 
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
-	}
-
-	public String getServiceName() {
-		return serviceName;
-	}
-
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
 	}
 
 }

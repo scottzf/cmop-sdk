@@ -1,22 +1,26 @@
 package com.sobey.sdk.entity;
 
+import com.sobey.sdk.constant.ES3TypeEnum;
+import com.sobey.sdk.constant.IDCEnum;
+
 public class CreateES3Entity {
 
 	private String accessKey;
 	private String es3Name;
-	private Double es3Size;
+	private Integer es3Size;
 	private String remark;
-	private String es3Type;
-	private String idc;
+	private ES3TypeEnum es3TypeEnum;
+	private IDCEnum idcEnum;
 
-	public CreateES3Entity(String accessKey, String es3Name, Double es3Size, String remark, String es3Type, String idc) {
+	public CreateES3Entity(String accessKey, String es3Name, Integer es3Size, String remark, ES3TypeEnum es3TypeEnum,
+			IDCEnum idcEnum) {
 		super();
 		this.accessKey = accessKey;
 		this.es3Name = es3Name;
 		this.es3Size = es3Size;
 		this.remark = remark;
-		this.es3Type = es3Type;
-		this.idc = idc;
+		this.es3TypeEnum = es3TypeEnum;
+		this.idcEnum = idcEnum;
 	}
 
 	public String getAccessKey() {
@@ -35,11 +39,11 @@ public class CreateES3Entity {
 		this.es3Name = es3Name;
 	}
 
-	public Double getEs3Size() {
+	public Integer getEs3Size() {
 		return es3Size;
 	}
 
-	public void setEs3Size(Double es3Size) {
+	public void setEs3Size(Integer es3Size) {
 		this.es3Size = es3Size;
 	}
 
@@ -51,20 +55,20 @@ public class CreateES3Entity {
 		this.remark = remark;
 	}
 
-	public String getEs3Type() {
-		return es3Type;
+	public ES3TypeEnum getEs3TypeEnum() {
+		return es3TypeEnum;
 	}
 
-	public void setEs3Type(String es3Type) {
-		this.es3Type = es3Type;
+	public void setEs3TypeEnum(ES3TypeEnum es3TypeEnum) {
+		this.es3TypeEnum = es3TypeEnum;
 	}
 
-	public String getIdc() {
-		return idc;
+	public IDCEnum getIdcEnum() {
+		return idcEnum;
 	}
 
-	public void setIdc(String idc) {
-		this.idc = idc;
+	public void setIdcEnum(IDCEnum idcEnum) {
+		this.idcEnum = idcEnum;
 	}
 
 }

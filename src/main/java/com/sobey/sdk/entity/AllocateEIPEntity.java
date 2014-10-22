@@ -1,20 +1,33 @@
 package com.sobey.sdk.entity;
 
+import com.sobey.sdk.constant.ISPEnum;
+
+/**
+ * protocols sourcePorts targetPorts用","区分
+ * 
+ * @author Administrator
+ *
+ */
 public class AllocateEIPEntity {
 
 	private String accessKey;
-	private String isp;
+	private ISPEnum ispEnum;
 	private String protocols;
 	private String sourcePorts;
 	private String targetPorts;
+	private String remark;
+	private String bandwidth;
 
-	public AllocateEIPEntity(String accessKey, String isp, String protocols, String sourcePorts, String targetPorts) {
+	public AllocateEIPEntity(String accessKey, ISPEnum ispEnum, String protocols, String sourcePorts,
+			String targetPorts, String remark, String bandwidth) {
 		super();
 		this.accessKey = accessKey;
-		this.isp = isp;
+		this.ispEnum = ispEnum;
 		this.protocols = protocols;
 		this.sourcePorts = sourcePorts;
 		this.targetPorts = targetPorts;
+		this.remark = remark;
+		this.bandwidth = bandwidth;
 	}
 
 	public String getAccessKey() {
@@ -25,12 +38,12 @@ public class AllocateEIPEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getIsp() {
-		return isp;
+	public ISPEnum getIspEnum() {
+		return ispEnum;
 	}
 
-	public void setIsp(String isp) {
-		this.isp = isp;
+	public void setIspEnum(ISPEnum ispEnum) {
+		this.ispEnum = ispEnum;
 	}
 
 	public String getProtocols() {
@@ -55,6 +68,22 @@ public class AllocateEIPEntity {
 
 	public void setTargetPorts(String targetPorts) {
 		this.targetPorts = targetPorts;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getBandwidth() {
+		return bandwidth;
+	}
+
+	public void setBandwidth(String bandwidth) {
+		this.bandwidth = bandwidth;
 	}
 
 }

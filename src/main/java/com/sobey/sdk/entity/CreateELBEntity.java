@@ -1,11 +1,24 @@
 package com.sobey.sdk.entity;
 
+/**
+ * ecsNames,protocols用","来区分多个
+ * 
+ * @author Administrator
+ *
+ */
 public class CreateELBEntity {
 
 	private String accessKey;
 	private String ecsNames;
 	private String protocols;
 
+	/**
+	 * ecsNames,protocols用","来区分多个
+	 * 
+	 * @param accessKey
+	 * @param ecsNames
+	 * @param protocols
+	 */
 	public CreateELBEntity(String accessKey, String ecsNames, String protocols) {
 		super();
 		this.accessKey = accessKey;

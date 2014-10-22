@@ -1,16 +1,18 @@
 package com.sobey.sdk.entity;
 
+import com.sobey.sdk.constant.PowerEnum;
+
 public class PowerOpsECSEntity {
 
 	private String accessKey;
 	private String ecsName;
-	private String powerOperation;
+	private PowerEnum powerEnum;
 
-	public PowerOpsECSEntity(String accessKey, String ecsName, String powerOperation) {
+	public PowerOpsECSEntity(String accessKey, String ecsName, PowerEnum powerEnum) {
 		super();
 		this.accessKey = accessKey;
 		this.ecsName = ecsName;
-		this.powerOperation = powerOperation;
+		this.powerEnum = powerEnum;
 	}
 
 	public String getAccessKey() {
@@ -29,12 +31,12 @@ public class PowerOpsECSEntity {
 		this.ecsName = ecsName;
 	}
 
-	public String getPowerOperation() {
-		return powerOperation;
+	public PowerEnum getPowerEnum() {
+		return powerEnum;
 	}
 
-	public void setPowerOperation(String powerOperation) {
-		this.powerOperation = powerOperation;
+	public void setPowerEnum(PowerEnum powerEnum) {
+		this.powerEnum = powerEnum;
 	}
 
 }

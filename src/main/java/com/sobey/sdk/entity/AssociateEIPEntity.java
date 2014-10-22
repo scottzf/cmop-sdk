@@ -4,13 +4,13 @@ public class AssociateEIPEntity {
 
 	private String accessKey;
 	private String eipName;
-	private String serviceName;
+	private String serviceId;
 
-	public AssociateEIPEntity(String accessKey, String eipName, String serviceName) {
+	public AssociateEIPEntity(String accessKey, String eipName, String serviceId) {
 		super();
 		this.accessKey = accessKey;
 		this.eipName = eipName;
-		this.serviceName = serviceName;
+		this.serviceId = serviceId;
 	}
 
 	public String getAccessKey() {
@@ -29,12 +29,12 @@ public class AssociateEIPEntity {
 		this.eipName = eipName;
 	}
 
-	public String getServiceName() {
-		return serviceName;
+	public String getServiceId() {
+		return serviceId;
 	}
 
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 
 }

@@ -1,20 +1,23 @@
 package com.sobey.sdk.entity;
 
+import com.sobey.sdk.constant.IDCEnum;
+import com.sobey.sdk.constant.SpecEnum;
+
 public class CreateECSEntity {
 
 	private String accessKey;
 	private String ecsName;
 	private String remark;
-	private String ecsSpec;
-	private String idc;
+	private SpecEnum specEnum;
+	private IDCEnum idcEnum;
 
-	public CreateECSEntity(String accessKey, String ecsName, String remark, String ecsSpec, String idc) {
+	public CreateECSEntity(String accessKey, String ecsName, String remark, SpecEnum specEnum, IDCEnum idcEnum) {
 		super();
 		this.accessKey = accessKey;
 		this.ecsName = ecsName;
 		this.remark = remark;
-		this.ecsSpec = ecsSpec;
-		this.idc = idc;
+		this.specEnum = specEnum;
+		this.idcEnum = idcEnum;
 	}
 
 	public String getAccessKey() {
@@ -41,20 +44,20 @@ public class CreateECSEntity {
 		this.remark = remark;
 	}
 
-	public String getEcsSpec() {
-		return ecsSpec;
+	public SpecEnum getSpecEnum() {
+		return specEnum;
 	}
 
-	public void setEcsSpec(String ecsSpec) {
-		this.ecsSpec = ecsSpec;
+	public void setSpecEnum(SpecEnum specEnum) {
+		this.specEnum = specEnum;
 	}
 
-	public String getIdc() {
-		return idc;
+	public IDCEnum getIdcEnum() {
+		return idcEnum;
 	}
 
-	public void setIdc(String idc) {
-		this.idc = idc;
+	public void setIdcEnum(IDCEnum idcEnum) {
+		this.idcEnum = idcEnum;
 	}
 
 }
