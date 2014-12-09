@@ -31,6 +31,8 @@ import com.sobey.sdk.entity.DetachES3Entity;
 import com.sobey.sdk.entity.DissociateEIPEntity;
 import com.sobey.sdk.entity.DissociateESGEntity;
 import com.sobey.sdk.entity.DissociateTagEntity;
+import com.sobey.sdk.entity.MonitorECSEntity;
+import com.sobey.sdk.entity.MonitorES3Entity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
 import com.sobey.sdk.entity.ReconfigECSEntity;
 import com.sobey.sdk.entity.RecoverEIPEntity;
@@ -38,8 +40,8 @@ import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
 
-	private static String URL = "http://localhost:8088/cmop-api/";
-//	private static String URL = "http://10.10.2.90:8088/cmop-api/";
+	// private static String URL = "http://localhost:8088/cmop-api/";
+	private static String URL = "http://10.10.2.90:8088/cmop-api/";
 
 	/***** ECS *****/
 
@@ -280,4 +282,23 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "dssociateTag/", params);
 	}
 
+	/***** Zabbix *****/
+
+	public static String monitorECS(MonitorECSEntity entity) {
+		return HttpClientUtils.get(URL + "currentData/" + entity.getEcsName() + "/" + entity.getEcsMonitorItemEnum()
+				+ "/" + entity.getAccessKey());
+	}
+
+	public static String monitorHistoryECS(MonitorECSEntity entity) {
+		return HttpClientUtils.get(URL + "historyData/" + entity.getEcsName() + "/" + entity.getEcsMonitorItemEnum()
+				+ "/" + entity.getAccessKey());
+	}
+
+	public static String monitorES3(MonitorES3Entity entity) {
+		return HttpClientUtils.get(URL + "storageCurrentData/" + entity.getEs3Name() + "/" + entity.getAccessKey());
+	}
+
+	public static String monitorHistoryES3(MonitorES3Entity entity) {
+		return HttpClientUtils.get(URL + "storageHistoryData/" + entity.getEs3Name() + "/" + entity.getAccessKey());
+	}
 }
