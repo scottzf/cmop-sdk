@@ -40,8 +40,8 @@ import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
 
-	// private static String URL = "http://localhost:8088/cmop-api/";
-	private static String URL = "http://10.10.2.90:8088/cmop-api/";
+	 private static String URL = "http://localhost:8088/cmop-api/";
+//	private static String URL = "http://10.10.2.90:8088/cmop-api/";
 
 	/***** ECS *****/
 
@@ -295,10 +295,12 @@ public class SDKClient {
 	}
 
 	public static String monitorES3(MonitorES3Entity entity) {
-		return HttpClientUtils.get(URL + "storageCurrentData/" + entity.getEs3Name() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "storageCurrentData/" + entity.getEs3Name() + "/"
+				+ entity.getEs3MonitorItemEnum() + "/" + entity.getAccessKey());
 	}
 
 	public static String monitorHistoryES3(MonitorES3Entity entity) {
-		return HttpClientUtils.get(URL + "storageHistoryData/" + entity.getEs3Name() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "storageHistoryData/" + entity.getEs3Name() + "/"
+				+ entity.getEs3MonitorItemEnum() + "/" + entity.getAccessKey());
 	}
 }
