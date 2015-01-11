@@ -5,31 +5,29 @@ import java.util.Map;
 
 import com.sobey.sdk.entity.AllocateEIPEntity;
 import com.sobey.sdk.entity.AssociateEIPEntity;
-import com.sobey.sdk.entity.AssociateESGEntity;
 import com.sobey.sdk.entity.AssociateTagEntity;
 import com.sobey.sdk.entity.AttachES3Entity;
 import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateELBEntity;
 import com.sobey.sdk.entity.CreateES3Entity;
-import com.sobey.sdk.entity.CreateESGEntity;
+import com.sobey.sdk.entity.CreateRouterEntity;
+import com.sobey.sdk.entity.CreateSubnetEntity;
 import com.sobey.sdk.entity.CreateTagEntity;
+import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DeleteDNSEntity;
 import com.sobey.sdk.entity.DeleteELBEntity;
 import com.sobey.sdk.entity.DeleteES3Entity;
-import com.sobey.sdk.entity.DeleteESGEntity;
 import com.sobey.sdk.entity.DeleteTagEntity;
 import com.sobey.sdk.entity.DescribeDNSEntity;
 import com.sobey.sdk.entity.DescribeECSEntity;
 import com.sobey.sdk.entity.DescribeEIPEntity;
 import com.sobey.sdk.entity.DescribeELBEntity;
 import com.sobey.sdk.entity.DescribeES3Entity;
-import com.sobey.sdk.entity.DescribeESGEntity;
 import com.sobey.sdk.entity.DescribeTagEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.DetachES3Entity;
 import com.sobey.sdk.entity.DissociateEIPEntity;
-import com.sobey.sdk.entity.DissociateESGEntity;
 import com.sobey.sdk.entity.DissociateTagEntity;
 import com.sobey.sdk.entity.MonitorECSEntity;
 import com.sobey.sdk.entity.MonitorES3Entity;
@@ -40,13 +38,45 @@ import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
 
-	 private static String URL = "http://localhost:8088/cmop-api/";
-//	private static String URL = "http://10.10.2.90:8088/cmop-api/";
+	private static String URL = "http://localhost:8088/cmop-api/";
+
+	// private static String URL = "http://10.10.2.90:8088/cmop-api/";
 
 	/***** ECS *****/
 
 	public static String describeECS(DescribeECSEntity entity) {
-		return HttpClientUtils.get(URL + "ECSResult/" + entity.getEcsName() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "ECSResult/" + entity.getCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createTenants(CreateTenantsEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("company", entity.getCompany());
+		params.put("name", entity.getName());
+		params.put("email", entity.getEmail());
+		params.put("password", entity.getPassword());
+		params.put("phone", entity.getPhone());
+		return HttpClientUtils.post(URL + "createTenants/", params);
+	}
+
+	public static String createSubnet(CreateSubnetEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("subnetName", entity.getSubnetName());
+		params.put("segment", entity.getSegment());
+		params.put("gateway", entity.getGateway());
+		params.put("netmask", entity.getNetmask());
+		params.put("idc", entity.getIdcEnum().toString());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "createSubnet/", params);
+	}
+
+	public static String createRouter(CreateRouterEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("routerName", entity.getRouterName());
+		params.put("remark", entity.getRemark());
+		params.put("ecsSpec", entity.getSpecEnum().toString());
+		params.put("idc", entity.getIdcEnum().toString());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "createRouter/", params);
 	}
 
 	public static String createECS(CreateECSEntity entity) {
@@ -62,14 +92,14 @@ public class SDKClient {
 	public static String destroyECS(DestroyECSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("ecsName", entity.getEcsName());
+		params.put("code", entity.getCode());
 		return HttpClientUtils.post(URL + "destroyECS/", params);
 	}
 
 	public static String powerOpsECS(PowerOpsECSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("ecsName", entity.getEcsName());
+		params.put("code", entity.getCode());
 		params.put("powerOperation", entity.getPowerEnum().toString());
 		return HttpClientUtils.post(URL + "powerOpsECS/", params);
 	}
@@ -77,7 +107,7 @@ public class SDKClient {
 	public static String reconfigECS(ReconfigECSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("ecsName", entity.getEcsName());
+		params.put("code", entity.getCode());
 		params.put("ecsSpec", entity.getSpecEnum().toString());
 		return HttpClientUtils.post(URL + "reconfigECS/", params);
 	}
@@ -85,7 +115,7 @@ public class SDKClient {
 	/***** ES3 *****/
 
 	public static String describeES3(DescribeES3Entity entity) {
-		return HttpClientUtils.get(URL + "ES3Result/" + entity.getEs3Name() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "ES3Result/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createES3(CreateES3Entity entity) {
@@ -96,6 +126,7 @@ public class SDKClient {
 		params.put("es3Type", entity.getEs3TypeEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("remark", entity.getRemark());
+		params.put("ecsId", entity.getEcsId().toString());
 		return HttpClientUtils.post(URL + "createES3/", params);
 	}
 
@@ -118,14 +149,14 @@ public class SDKClient {
 	public static String deleteES3(DeleteES3Entity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Name", entity.getEs3Name());
+		params.put("es3Name", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteES3/", params);
 	}
 
 	/***** ELB *****/
 
 	public static String describeELB(DescribeELBEntity entity) {
-		return HttpClientUtils.get(URL + "ELBResult/" + entity.getElbName() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "ELBResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createELB(CreateELBEntity entity) {
@@ -139,14 +170,14 @@ public class SDKClient {
 	public static String deleteELB(DeleteELBEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("elbName", entity.getElbName());
+		params.put("elbName", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteELB/", params);
 	}
 
 	/***** EIP *****/
 
 	public static String describeEIP(DescribeEIPEntity entity) {
-		return HttpClientUtils.get(URL + "EIPResult/" + entity.getEipName() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "EIPResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String allocateEIP(AllocateEIPEntity entity) {
@@ -187,7 +218,7 @@ public class SDKClient {
 	/***** DNS *****/
 
 	public static String describeDNS(DescribeDNSEntity entity) {
-		return HttpClientUtils.get(URL + "DNSResult/" + entity.getDnsName() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "DNSResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createDNS(CreateDNSEntity entity) {
@@ -202,53 +233,14 @@ public class SDKClient {
 	public static String deleteDNS(DeleteDNSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("domainName", entity.getDomain());
+		params.put("domainName", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteDNS/", params);
-	}
-
-	/***** ESG *****/
-
-	public static String describeESG(DescribeESGEntity entity) {
-		return HttpClientUtils.get(URL + "ESGResult/" + entity.getEsgName() + "/" + entity.getAccessKey());
-	}
-
-	public static String createESG(CreateESGEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("esgName", entity.getEsgName());
-		params.put("policyTypes", entity.getPolicyTypes());
-		params.put("targetIPs", entity.getTargetIPs());
-		params.put("targetIPs", entity.getRemark());
-		return HttpClientUtils.post(URL + "createESG/", params);
-	}
-
-	public static String deleteESG(DeleteESGEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("esgName", entity.getEsgName());
-		return HttpClientUtils.post(URL + "deleteESG/", params);
-	}
-
-	public static String associateESG(AssociateESGEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("esgName", entity.getEsgName());
-		params.put("ecsName", entity.getEcsName());
-		return HttpClientUtils.post(URL + "associateESG/", params);
-	}
-
-	public static String dissociateESG(DissociateESGEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("esgName", entity.getEsgName());
-		params.put("ecsName", entity.getEcsName());
-		return HttpClientUtils.post(URL + "dissociateESG/", params);
 	}
 
 	/***** TAG *****/
 
 	public static String describeTag(DescribeTagEntity entity) {
-		return HttpClientUtils.get(URL + "TagResult/" + entity.getTagName() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "TagResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createTag(CreateTagEntity entity) {
@@ -262,7 +254,7 @@ public class SDKClient {
 	public static String deleteTag(DeleteTagEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("tagName", entity.getTagName());
+		params.put("tagName", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteTag/", params);
 	}
 

@@ -23,7 +23,7 @@ public class ECSTest {
 
 	@Test
 	public void createECS() {
-		CreateECSEntity entity = new CreateECSEntity(access_key, "云生产-3", "sdk test", SpecEnum.CentOS6_5,
+		CreateECSEntity entity = new CreateECSEntity(access_key, "云生产-3", "sdk test", SpecEnum.CentOS6_3,
 				IDCEnum.西安核心机房);
 		System.out.println(SDKClient.createECS(entity));
 	}
@@ -36,7 +36,7 @@ public class ECSTest {
 
 	@Test
 	public void reconfigECS() {
-		ReconfigECSEntity entity = new ReconfigECSEntity(access_key, "云生产-3", SpecEnum.CentOS6_5);
+		ReconfigECSEntity entity = new ReconfigECSEntity(access_key, "云生产-3", SpecEnum.CentOS6_3);
 		System.out.println(SDKClient.reconfigECS(entity));
 	}
 

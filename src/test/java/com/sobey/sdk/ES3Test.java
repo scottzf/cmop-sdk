@@ -2,10 +2,7 @@ package com.sobey.sdk;
 
 import org.junit.Test;
 
-import com.sobey.sdk.constant.ES3TypeEnum;
-import com.sobey.sdk.constant.IDCEnum;
 import com.sobey.sdk.entity.AttachES3Entity;
-import com.sobey.sdk.entity.CreateES3Entity;
 import com.sobey.sdk.entity.DeleteES3Entity;
 import com.sobey.sdk.entity.DescribeES3Entity;
 import com.sobey.sdk.entity.DetachES3Entity;
@@ -28,9 +25,9 @@ public class ES3Test {
 
 	@Test
 	public void createES3() {
-		CreateES3Entity entity = new CreateES3Entity(access_key, "sobey", 20, "sdk test", ES3TypeEnum.高吞吐,
-				IDCEnum.西安核心机房);
-		System.out.println(SDKClient.createES3(entity));
+		// CreateES3Entity entity = new CreateES3Entity(accessKey, ecsId, es3Name, es3Size, es3TypeEnum, idcEnum,
+		// remark);
+		// System.out.println(SDKClient.createES3(entity));
 	}
 
 	@Test

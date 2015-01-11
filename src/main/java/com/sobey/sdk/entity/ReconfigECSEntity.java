@@ -5,13 +5,13 @@ import com.sobey.sdk.constant.SpecEnum;
 public class ReconfigECSEntity {
 
 	private String accessKey;
-	private String ecsName;
+	private String code;
 	private SpecEnum specEnum;
 
-	public ReconfigECSEntity(String accessKey, String ecsName, SpecEnum specEnum) {
+	public ReconfigECSEntity(String accessKey, String code, SpecEnum specEnum) {
 		super();
 		this.accessKey = accessKey;
-		this.ecsName = ecsName;
+		this.code = code;
 		this.specEnum = specEnum;
 	}
 
@@ -23,12 +23,12 @@ public class ReconfigECSEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getEcsName() {
-		return ecsName;
+	public String getCode() {
+		return code;
 	}
 
-	public void setEcsName(String ecsName) {
-		this.ecsName = ecsName;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public SpecEnum getSpecEnum() {

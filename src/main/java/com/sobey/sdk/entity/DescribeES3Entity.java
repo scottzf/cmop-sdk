@@ -1,30 +1,29 @@
 package com.sobey.sdk.entity;
 
 public class DescribeES3Entity {
-
+	
 	private String accessKey;
-	private String es3Name;
+	private String code;
 
-	public DescribeES3Entity(String accessKey, String es3Name) {
+	public DescribeES3Entity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
-		this.es3Name = es3Name;
+		this.code = code;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
-	public String getEs3Name() {
-		return es3Name;
+	public void setCode(String code) {
+		this.code = code;
 	}
-
-	public void setEs3Name(String es3Name) {
-		this.es3Name = es3Name;
-	}
-
 }

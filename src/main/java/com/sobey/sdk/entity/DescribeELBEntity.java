@@ -3,28 +3,28 @@ package com.sobey.sdk.entity;
 public class DescribeELBEntity {
 
 	private String accessKey;
-	private String elbName;
+	private String code;
 
-	public DescribeELBEntity(String accessKey, String elbName) {
+	public DescribeELBEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
-		this.elbName = elbName;
+		this.code = code;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
-	public String getElbName() {
-		return elbName;
-	}
-
-	public void setElbName(String elbName) {
-		this.elbName = elbName;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

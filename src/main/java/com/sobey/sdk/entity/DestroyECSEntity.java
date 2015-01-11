@@ -3,12 +3,12 @@ package com.sobey.sdk.entity;
 public class DestroyECSEntity {
 
 	private String accessKey;
-	private String ecsName;
+	private String code;
 
-	public DestroyECSEntity(String accessKey, String ecsName) {
+	public DestroyECSEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
-		this.ecsName = ecsName;
+		this.code = code;
 	}
 
 	public String getAccessKey() {
@@ -19,12 +19,12 @@ public class DestroyECSEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getEcsName() {
-		return ecsName;
+	public String getCode() {
+		return code;
 	}
 
-	public void setEcsName(String ecsName) {
-		this.ecsName = ecsName;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

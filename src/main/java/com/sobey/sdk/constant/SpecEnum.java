@@ -2,7 +2,7 @@ package com.sobey.sdk.constant;
 
 public enum SpecEnum {
 
-	CentOS6_5("CentOS6.5");
+	CentOS6_3("Centos 6.3 MOD 25G"), vRouter("vRouter_MOD");
 
 	private String value;
 

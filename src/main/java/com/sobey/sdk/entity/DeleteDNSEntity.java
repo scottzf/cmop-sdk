@@ -3,28 +3,28 @@ package com.sobey.sdk.entity;
 public class DeleteDNSEntity {
 
 	private String accessKey;
-	private String domain;
+	private String code;
 
-	public DeleteDNSEntity(String accessKey, String domain) {
+	public DeleteDNSEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
-		this.domain = domain;
+		this.code = code;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
-	public String getDomain() {
-		return domain;
-	}
-
-	public void setDomain(String domain) {
-		this.domain = domain;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

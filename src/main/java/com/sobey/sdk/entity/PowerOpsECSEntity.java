@@ -5,13 +5,13 @@ import com.sobey.sdk.constant.PowerEnum;
 public class PowerOpsECSEntity {
 
 	private String accessKey;
-	private String ecsName;
+	private String code;
 	private PowerEnum powerEnum;
 
-	public PowerOpsECSEntity(String accessKey, String ecsName, PowerEnum powerEnum) {
+	public PowerOpsECSEntity(String accessKey, String code, PowerEnum powerEnum) {
 		super();
 		this.accessKey = accessKey;
-		this.ecsName = ecsName;
+		this.code = code;
 		this.powerEnum = powerEnum;
 	}
 
@@ -19,20 +19,20 @@ public class PowerOpsECSEntity {
 		return accessKey;
 	}
 
-	public void setAccessKey(String accessKey) {
-		this.accessKey = accessKey;
-	}
-
-	public String getEcsName() {
-		return ecsName;
-	}
-
-	public void setEcsName(String ecsName) {
-		this.ecsName = ecsName;
+	public String getCode() {
+		return code;
 	}
 
 	public PowerEnum getPowerEnum() {
 		return powerEnum;
+	}
+
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public void setPowerEnum(PowerEnum powerEnum) {

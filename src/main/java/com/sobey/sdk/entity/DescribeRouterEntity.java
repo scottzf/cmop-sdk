@@ -1,11 +1,11 @@
 package com.sobey.sdk.entity;
 
-public class DeleteELBEntity {
+public class DescribeRouterEntity {
 
 	private String accessKey;
 	private String code;
 
-	public DeleteELBEntity(String accessKey, String code) {
+	public DescribeRouterEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;
@@ -26,5 +26,4 @@ public class DeleteELBEntity {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 }
