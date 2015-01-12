@@ -38,9 +38,7 @@ import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
 
-	private static String URL = "http://localhost:8088/cmop-api/";
-
-	// private static String URL = "http://10.10.2.90:8088/cmop-api/";
+	private static String URL = "http://10.2.12.90:8088/cmop-api/";
 
 	/***** ECS *****/
 
@@ -73,7 +71,7 @@ public class SDKClient {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("routerName", entity.getRouterName());
 		params.put("remark", entity.getRemark());
-		params.put("ecsSpec", entity.getSpecEnum().toString());
+		params.put("routerSpec", entity.getRouterSpecEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("accessKey", entity.getAccessKey());
 		return HttpClientUtils.post(URL + "createRouter/", params);

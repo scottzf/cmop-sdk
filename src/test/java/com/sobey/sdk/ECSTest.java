@@ -6,6 +6,7 @@ import com.sobey.sdk.constant.IDCEnum;
 import com.sobey.sdk.constant.PowerEnum;
 import com.sobey.sdk.constant.SpecEnum;
 import com.sobey.sdk.entity.CreateECSEntity;
+import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DescribeECSEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
@@ -16,15 +17,15 @@ public class ECSTest {
 	private static String access_key = "YWNjZXNza2V5MjIyMw=1";
 
 	@Test
-	public void describeECS() {
-		DescribeECSEntity entity = new DescribeECSEntity(access_key, "云生产-1");
-		System.out.println(SDKClient.describeECS(entity));
+	public void createTenants() {
+		CreateTenantsEntity entity = new CreateTenantsEntity("Sobey", "1234@sobeyl.com", "xman", "pwd", "tel");
+		System.out.println(SDKClient.createTenants(entity));
 	}
 
 	@Test
 	public void createECS() {
 		CreateECSEntity entity = new CreateECSEntity(access_key, "云生产-3", "sdk test", SpecEnum.CentOS6_3,
-				IDCEnum.西安核心机房);
+				IDCEnum.成都核心数据中心);
 		System.out.println(SDKClient.createECS(entity));
 	}
 

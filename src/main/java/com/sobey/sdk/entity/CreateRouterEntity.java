@@ -1,7 +1,7 @@
 package com.sobey.sdk.entity;
 
 import com.sobey.sdk.constant.IDCEnum;
-import com.sobey.sdk.constant.SpecEnum;
+import com.sobey.sdk.constant.RouterSpecEnum;
 
 public class CreateRouterEntity {
 
@@ -9,47 +9,56 @@ public class CreateRouterEntity {
 	private IDCEnum idcEnum;
 	private String remark;
 	private String routerName;
-	private SpecEnum specEnum;
-	public CreateRouterEntity(String accessKey, IDCEnum idcEnum, String remark, String routerName, SpecEnum specEnum) {
+	private RouterSpecEnum routerSpecEnum;
+
+	public CreateRouterEntity(String accessKey, IDCEnum idcEnum, String remark, String routerName,
+			RouterSpecEnum routerSpecEnum) {
 		super();
 		this.accessKey = accessKey;
 		this.idcEnum = idcEnum;
 		this.remark = remark;
 		this.routerName = routerName;
-		this.specEnum = specEnum;
+		this.routerSpecEnum = routerSpecEnum;
 	}
+
 	public String getAccessKey() {
 		return accessKey;
 	}
-	public IDCEnum getIdcEnum() {
-		return idcEnum;
-	}
-	public String getRemark() {
-		return remark;
-	}
-	public String getRouterName() {
-		return routerName;
-	}
-	public SpecEnum getSpecEnum() {
-		return specEnum;
-	}
+
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
+	}
+
+	public IDCEnum getIdcEnum() {
+		return idcEnum;
 	}
 
 	public void setIdcEnum(IDCEnum idcEnum) {
 		this.idcEnum = idcEnum;
 	}
+
+	public String getRemark() {
+		return remark;
+	}
+
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public String getRouterName() {
+		return routerName;
+	}
+
 	public void setRouterName(String routerName) {
 		this.routerName = routerName;
 	}
-	public void setSpecEnum(SpecEnum specEnum) {
-		this.specEnum = specEnum;
+
+	public RouterSpecEnum getRouterSpecEnum() {
+		return routerSpecEnum;
 	}
 
-	 
+	public void setRouterSpecEnum(RouterSpecEnum routerSpecEnum) {
+		this.routerSpecEnum = routerSpecEnum;
+	}
 
 }
