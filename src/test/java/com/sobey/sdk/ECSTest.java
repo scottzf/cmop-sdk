@@ -2,12 +2,10 @@ package com.sobey.sdk;
 
 import org.junit.Test;
 
-import com.sobey.sdk.constant.IDCEnum;
 import com.sobey.sdk.constant.PowerEnum;
 import com.sobey.sdk.constant.SpecEnum;
 import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateTenantsEntity;
-import com.sobey.sdk.entity.DescribeECSEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
 import com.sobey.sdk.entity.ReconfigECSEntity;
@@ -24,8 +22,7 @@ public class ECSTest {
 
 	@Test
 	public void createECS() {
-		CreateECSEntity entity = new CreateECSEntity(access_key, "云生产-3", "sdk test", SpecEnum.CentOS6_3,
-				IDCEnum.成都核心数据中心);
+		CreateECSEntity entity = new CreateECSEntity();
 		System.out.println(SDKClient.createECS(entity));
 	}
 

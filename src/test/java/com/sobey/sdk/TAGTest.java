@@ -15,7 +15,8 @@ import com.sobey.sdk.entity.DissociateTagEntity;
 public class TAGTest {
 
 	private static String access_key = "YWNjZXNza2V5MjIyMw=1";
-//	private static String access_key = "YWNjZXNza2V5NzU2NA==";
+
+	// private static String access_key = "YWNjZXNza2V5NzU2NA==";
 
 	@Test
 	public void describeTag() {

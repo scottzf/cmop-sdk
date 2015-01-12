@@ -1,7 +1,7 @@
 package com.sobey.sdk.entity;
 
 public class DescribeES3Entity {
-	
+
 	private String accessKey;
 	private String code;
 
