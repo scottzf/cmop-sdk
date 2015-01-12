@@ -70,6 +70,7 @@ public class SDKClient {
 	public static String createRouter(CreateRouterEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("routerName", entity.getRouterName());
+		params.put("subnetCode", entity.getSubnetCode());
 		params.put("remark", entity.getRemark());
 		params.put("routerSpec", entity.getRouterSpecEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
@@ -81,6 +82,7 @@ public class SDKClient {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
 		params.put("ecsName", entity.getEcsName());
+		params.put("subnetCode", entity.getSubnetCode());
 		params.put("remark", entity.getRemark());
 		params.put("ecsSpec", entity.getSpecEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
@@ -124,7 +126,7 @@ public class SDKClient {
 		params.put("es3Type", entity.getEs3TypeEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("remark", entity.getRemark());
-		params.put("ecsId", entity.getEcsId().toString());
+		params.put("ecsCode", entity.getEcsCode());
 		return HttpClientUtils.post(URL + "createES3/", params);
 	}
 
@@ -147,7 +149,7 @@ public class SDKClient {
 	public static String deleteES3(DeleteES3Entity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Name", entity.getCode());
+		params.put("code", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteES3/", params);
 	}
 

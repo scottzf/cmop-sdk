@@ -10,15 +10,17 @@ public class CreateRouterEntity {
 	private String remark;
 	private String routerName;
 	private RouterSpecEnum routerSpecEnum;
+	private String subnetCode;
 
 	public CreateRouterEntity(String accessKey, IDCEnum idcEnum, String remark, String routerName,
-			RouterSpecEnum routerSpecEnum) {
+			RouterSpecEnum routerSpecEnum, String subnetCode) {
 		super();
 		this.accessKey = accessKey;
 		this.idcEnum = idcEnum;
 		this.remark = remark;
 		this.routerName = routerName;
 		this.routerSpecEnum = routerSpecEnum;
+		this.subnetCode = subnetCode;
 	}
 
 	public String getAccessKey() {
@@ -59,6 +61,14 @@ public class CreateRouterEntity {
 
 	public void setRouterSpecEnum(RouterSpecEnum routerSpecEnum) {
 		this.routerSpecEnum = routerSpecEnum;
+	}
+
+	public String getSubnetCode() {
+		return subnetCode;
+	}
+
+	public void setSubnetCode(String subnetCode) {
+		this.subnetCode = subnetCode;
 	}
 
 }

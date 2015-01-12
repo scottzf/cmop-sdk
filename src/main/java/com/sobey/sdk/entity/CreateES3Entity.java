@@ -6,18 +6,18 @@ import com.sobey.sdk.constant.IDCEnum;
 public class CreateES3Entity {
 
 	private String accessKey;
-	private Integer ecsId;
+	private String ecsCode;
 	private String es3Name;
 	private Integer es3Size;
 	private ES3TypeEnum es3TypeEnum;
 	private IDCEnum idcEnum;
 	private String remark;
 
-	public CreateES3Entity(String accessKey, Integer ecsId, String es3Name, Integer es3Size, ES3TypeEnum es3TypeEnum,
+	public CreateES3Entity(String accessKey, String ecsCode, String es3Name, Integer es3Size, ES3TypeEnum es3TypeEnum,
 			IDCEnum idcEnum, String remark) {
 		super();
 		this.accessKey = accessKey;
-		this.ecsId = ecsId;
+		this.ecsCode = ecsCode;
 		this.es3Name = es3Name;
 		this.es3Size = es3Size;
 		this.es3TypeEnum = es3TypeEnum;
@@ -29,8 +29,8 @@ public class CreateES3Entity {
 		return accessKey;
 	}
 
-	public Integer getEcsId() {
-		return ecsId;
+	public String getEcsCode() {
+		return ecsCode;
 	}
 
 	public String getEs3Name() {
@@ -57,8 +57,8 @@ public class CreateES3Entity {
 		this.accessKey = accessKey;
 	}
 
-	public void setEcsId(Integer ecsId) {
-		this.ecsId = ecsId;
+	public void setEcsCode(String ecsCode) {
+		this.ecsCode = ecsCode;
 	}
 
 	public void setEs3Name(String es3Name) {
