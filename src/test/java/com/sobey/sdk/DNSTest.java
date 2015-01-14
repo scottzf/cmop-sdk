@@ -2,7 +2,6 @@ package com.sobey.sdk;
 
 import org.junit.Test;
 
-import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.DeleteDNSEntity;
 import com.sobey.sdk.entity.DescribeDNSEntity;
 
@@ -22,9 +21,9 @@ public class DNSTest {
 
 	@Test
 	public void createDNS() {
-		CreateDNSEntity entity = new CreateDNSEntity(access_key, "cmoptest.sobeycache.com", "119.6.200.202", "HTTP",
-				"sdk test");
-		System.out.println(SDKClient.createDNS(entity));
+		// CreateDNSEntity entity = new CreateDNSEntity(access_key, "cmoptest.sobeycache.com", "119.6.200.202", "HTTP",
+		// "sdk test");
+		// System.out.println(SDKClient.createDNS(entity));
 	}
 
 	@Test

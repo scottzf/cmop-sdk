@@ -11,6 +11,7 @@ import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateELBEntity;
 import com.sobey.sdk.entity.CreateES3Entity;
+import com.sobey.sdk.entity.CreateFirewallServiceEntity;
 import com.sobey.sdk.entity.CreateRouterEntity;
 import com.sobey.sdk.entity.CreateSubnetEntity;
 import com.sobey.sdk.entity.CreateTagEntity;
@@ -195,23 +196,23 @@ public class SDKClient {
 	public static String recoverEIP(RecoverEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("eipName", entity.getEipName());
+		params.put("code", entity.getCode());
 		return HttpClientUtils.post(URL + "recoverEIP/", params);
 	}
 
 	public static String associateEIP(AssociateEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("eipName", entity.getEipName());
-		params.put("serviceId", entity.getServiceId());
+		params.put("code", entity.getCode());
+		params.put("serviceCode", entity.getServiceCode());
 		return HttpClientUtils.post(URL + "associateEIP/", params);
 	}
 
 	public static String dissociateEIP(DissociateEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("eipName", entity.getEipName());
-		params.put("serviceId", entity.getServiceId());
+		params.put("code", entity.getCode());
+		params.put("serviceCode", entity.getServiceCode());
 		return HttpClientUtils.post(URL + "dissociateEIP/", params);
 	}
 
@@ -224,8 +225,10 @@ public class SDKClient {
 	public static String createDNS(CreateDNSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("domainName", entity.getDomain());
-		params.put("eipNames", entity.getEipNames());
+		params.put("domainName", entity.getDomainName());
+		params.put("eipCodes", entity.getEipCodes());
+		params.put("remark", entity.getRemark());
+		params.put("idc", entity.getIdcEnum().toString());
 		params.put("protocols", entity.getProtocols());
 		return HttpClientUtils.post(URL + "createDNS/", params);
 	}
@@ -235,6 +238,34 @@ public class SDKClient {
 		params.put("accessKey", entity.getAccessKey());
 		params.put("domainName", entity.getCode());
 		return HttpClientUtils.post(URL + "deleteDNS/", params);
+	}
+
+	/***** FirewallService *****/
+
+	public static String describeFirewallServiceResult(DescribeDNSEntity entity) {
+		return HttpClientUtils.get(URL + "FirewallServiceResult/" + entity.getCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createFirewallService(CreateFirewallServiceEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("firewallServiceName", entity.getFirewallServiceName());
+		params.put("directions", entity.getDirections());
+		params.put("protocols", entity.getProtocols());
+		params.put("startPorts", entity.getStartPorts());
+		params.put("ipaddresses", entity.getIpaddresses());
+		params.put("rulesNames", entity.getRulesNames());
+		params.put("actions", entity.getActions());
+		params.put("idc", entity.getIdcEnum().toString());
+		params.put("endPorts", entity.getEndPorts());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "createFirewallServiceResult/", params);
+	}
+
+	public static String createFirewallService(DeleteDNSEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("domainName", entity.getCode());
+		return HttpClientUtils.post(URL + "createFirewallServiceResult/", params);
 	}
 
 	/***** TAG *****/

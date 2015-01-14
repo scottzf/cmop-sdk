@@ -1,11 +1,11 @@
 package com.sobey.sdk.entity;
 
-public class RecoverEIPEntity {
+public class DescribeFirewallServiceEntity {
 
 	private String accessKey;
 	private String code;
 
-	public RecoverEIPEntity(String accessKey, String code) {
+	public DescribeFirewallServiceEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;
@@ -15,16 +15,15 @@ public class RecoverEIPEntity {
 		return accessKey;
 	}
 
-	public void setAccessKey(String accessKey) {
-		this.accessKey = accessKey;
-	}
-
 	public String getCode() {
 		return code;
+	}
+
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
 	}
 
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 }

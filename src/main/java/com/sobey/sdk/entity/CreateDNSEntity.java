@@ -1,20 +1,25 @@
 package com.sobey.sdk.entity;
 
+import com.sobey.sdk.constant.IDCEnum;
+
 public class CreateDNSEntity {
 
 	private String accessKey;
-	private String domain;
-	private String eipNames;
+	private String domainName;
+	private String eipCodes;
 	private String protocols;
 	private String remark;
+	private IDCEnum idcEnum;
 
-	public CreateDNSEntity(String accessKey, String domain, String eipNames, String protocols, String remark) {
+	public CreateDNSEntity(String accessKey, String domainName, String eipCodes, String protocols, String remark,
+			IDCEnum idcEnum) {
 		super();
 		this.accessKey = accessKey;
-		this.domain = domain;
-		this.eipNames = eipNames;
+		this.domainName = domainName;
+		this.eipCodes = eipCodes;
 		this.protocols = protocols;
 		this.remark = remark;
+		this.idcEnum = idcEnum;
 	}
 
 	public String getAccessKey() {
@@ -25,20 +30,20 @@ public class CreateDNSEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getDomain() {
-		return domain;
+	public String getDomainName() {
+		return domainName;
 	}
 
-	public void setDomain(String domain) {
-		this.domain = domain;
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
 	}
 
-	public String getEipNames() {
-		return eipNames;
+	public String getEipCodes() {
+		return eipCodes;
 	}
 
-	public void setEipNames(String eipNames) {
-		this.eipNames = eipNames;
+	public void setEipCodes(String eipCodes) {
+		this.eipCodes = eipCodes;
 	}
 
 	public String getProtocols() {
@@ -55,6 +60,14 @@ public class CreateDNSEntity {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public IDCEnum getIdcEnum() {
+		return idcEnum;
+	}
+
+	public void setIdcEnum(IDCEnum idcEnum) {
+		this.idcEnum = idcEnum;
 	}
 
 }

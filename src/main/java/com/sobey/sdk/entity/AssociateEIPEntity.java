@@ -3,14 +3,14 @@ package com.sobey.sdk.entity;
 public class AssociateEIPEntity {
 
 	private String accessKey;
-	private String eipName;
-	private String serviceId;
+	private String code;
+	private String serviceCode;
 
-	public AssociateEIPEntity(String accessKey, String eipName, String serviceId) {
+	public AssociateEIPEntity(String accessKey, String code, String serviceCode) {
 		super();
 		this.accessKey = accessKey;
-		this.eipName = eipName;
-		this.serviceId = serviceId;
+		this.code = code;
+		this.serviceCode = serviceCode;
 	}
 
 	public String getAccessKey() {
@@ -21,20 +21,20 @@ public class AssociateEIPEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getEipName() {
-		return eipName;
+	public String getCode() {
+		return code;
 	}
 
-	public void setEipName(String eipName) {
-		this.eipName = eipName;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public String getServiceId() {
-		return serviceId;
+	public String getServiceCode() {
+		return serviceCode;
 	}
 
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
+	public void setServiceCode(String serviceCode) {
+		this.serviceCode = serviceCode;
 	}
 
 }
