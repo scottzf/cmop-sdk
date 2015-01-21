@@ -12,6 +12,17 @@ public class CreateECSEntity {
 	private SpecEnum specEnum;
 	private String subnetCode;
 
+	public CreateECSEntity(String accessKey, String ecsName, IDCEnum idcEnum, String remark, SpecEnum specEnum,
+			String subnetCode) {
+		super();
+		this.accessKey = accessKey;
+		this.ecsName = ecsName;
+		this.idcEnum = idcEnum;
+		this.remark = remark;
+		this.specEnum = specEnum;
+		this.subnetCode = subnetCode;
+	}
+
 	public String getAccessKey() {
 		return accessKey;
 	}

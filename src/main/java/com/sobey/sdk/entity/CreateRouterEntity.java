@@ -6,21 +6,21 @@ import com.sobey.sdk.constant.RouterSpecEnum;
 public class CreateRouterEntity {
 
 	private String accessKey;
+	private String firewallServiceCode;
 	private IDCEnum idcEnum;
 	private String remark;
 	private String routerName;
 	private RouterSpecEnum routerSpecEnum;
-	private String subnetCode;
 
-	public CreateRouterEntity(String accessKey, IDCEnum idcEnum, String remark, String routerName,
-			RouterSpecEnum routerSpecEnum, String subnetCode) {
+	public CreateRouterEntity(String accessKey, String firewallServiceCode, IDCEnum idcEnum, String remark,
+			String routerName, RouterSpecEnum routerSpecEnum) {
 		super();
 		this.accessKey = accessKey;
+		this.firewallServiceCode = firewallServiceCode;
 		this.idcEnum = idcEnum;
 		this.remark = remark;
 		this.routerName = routerName;
 		this.routerSpecEnum = routerSpecEnum;
-		this.subnetCode = subnetCode;
 	}
 
 	public String getAccessKey() {
@@ -29,6 +29,14 @@ public class CreateRouterEntity {
 
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
+	}
+
+	public String getFirewallServiceCode() {
+		return firewallServiceCode;
+	}
+
+	public void setFirewallServiceCode(String firewallServiceCode) {
+		this.firewallServiceCode = firewallServiceCode;
 	}
 
 	public IDCEnum getIdcEnum() {
@@ -61,14 +69,6 @@ public class CreateRouterEntity {
 
 	public void setRouterSpecEnum(RouterSpecEnum routerSpecEnum) {
 		this.routerSpecEnum = routerSpecEnum;
-	}
-
-	public String getSubnetCode() {
-		return subnetCode;
-	}
-
-	public void setSubnetCode(String subnetCode) {
-		this.subnetCode = subnetCode;
 	}
 
 }

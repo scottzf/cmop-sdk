@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import com.sobey.sdk.constant.PowerEnum;
 import com.sobey.sdk.constant.SpecEnum;
-import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
@@ -16,14 +15,14 @@ public class ECSTest {
 
 	@Test
 	public void createTenants() {
-		CreateTenantsEntity entity = new CreateTenantsEntity("Sobey", "1234@sobeyl.com", "xman", "pwd", "tel");
+		CreateTenantsEntity entity = new CreateTenantsEntity("Sobey", "1234@sobeyl.com", "xman", "tel");
 		System.out.println(SDKClient.createTenants(entity));
 	}
 
 	@Test
 	public void createECS() {
-		CreateECSEntity entity = new CreateECSEntity();
-		System.out.println(SDKClient.createECS(entity));
+		// CreateECSEntity entity = new CreateECSEntity();
+		// System.out.println(SDKClient.createECS(entity));
 	}
 
 	@Test

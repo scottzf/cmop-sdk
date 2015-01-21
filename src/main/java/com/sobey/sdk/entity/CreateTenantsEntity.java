@@ -5,15 +5,13 @@ public class CreateTenantsEntity {
 	private String company;
 	private String email;
 	private String name;
-	private String password;
 	private String phone;
 
-	public CreateTenantsEntity(String company, String email, String name, String password, String phone) {
+	public CreateTenantsEntity(String company, String email, String name, String phone) {
 		super();
 		this.company = company;
 		this.email = email;
 		this.name = name;
-		this.password = password;
 		this.phone = phone;
 	}
 
@@ -27,10 +25,6 @@ public class CreateTenantsEntity {
 
 	public String getName() {
 		return name;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public String getPhone() {
@@ -47,10 +41,6 @@ public class CreateTenantsEntity {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public void setPhone(String phone) {

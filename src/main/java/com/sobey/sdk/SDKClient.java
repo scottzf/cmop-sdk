@@ -7,6 +7,8 @@ import com.sobey.sdk.entity.AllocateEIPEntity;
 import com.sobey.sdk.entity.AssociateEIPEntity;
 import com.sobey.sdk.entity.AssociateTagEntity;
 import com.sobey.sdk.entity.AttachES3Entity;
+import com.sobey.sdk.entity.BindingFirewallServiceEntity;
+import com.sobey.sdk.entity.BindingRouterEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateELBEntity;
@@ -26,6 +28,7 @@ import com.sobey.sdk.entity.DescribeEIPEntity;
 import com.sobey.sdk.entity.DescribeELBEntity;
 import com.sobey.sdk.entity.DescribeES3Entity;
 import com.sobey.sdk.entity.DescribeTagEntity;
+import com.sobey.sdk.entity.DescribeVMRCEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.DetachES3Entity;
 import com.sobey.sdk.entity.DissociateEIPEntity;
@@ -52,7 +55,6 @@ public class SDKClient {
 		params.put("company", entity.getCompany());
 		params.put("name", entity.getName());
 		params.put("email", entity.getEmail());
-		params.put("password", entity.getPassword());
 		params.put("phone", entity.getPhone());
 		return HttpClientUtils.post(URL + "createTenants/", params);
 	}
@@ -68,14 +70,22 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "createSubnet/", params);
 	}
 
+	public static String bindingRouter(BindingRouterEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("routerCode", entity.getRouterCode());
+		params.put("subnetCodes", entity.getSubnetCodes());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "bindingRouter/", params);
+	}
+
 	public static String createRouter(CreateRouterEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("routerName", entity.getRouterName());
-		params.put("subnetCode", entity.getSubnetCode());
 		params.put("remark", entity.getRemark());
 		params.put("routerSpec", entity.getRouterSpecEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("accessKey", entity.getAccessKey());
+		params.put("firewallServiceCode", entity.getFirewallServiceCode());
 		return HttpClientUtils.post(URL + "createRouter/", params);
 	}
 
@@ -258,14 +268,15 @@ public class SDKClient {
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("endPorts", entity.getEndPorts());
 		params.put("accessKey", entity.getAccessKey());
-		return HttpClientUtils.post(URL + "createFirewallServiceResult/", params);
+		return HttpClientUtils.post(URL + "createFirewallService/", params);
 	}
 
-	public static String createFirewallService(DeleteDNSEntity entity) {
+	public static String bindingFirewallService(BindingFirewallServiceEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("domainName", entity.getCode());
-		return HttpClientUtils.post(URL + "createFirewallServiceResult/", params);
+		params.put("firewallServiceCode", entity.getFirewallServiceCode());
+		params.put("routerCode", entity.getRouterCode());
+		return HttpClientUtils.post(URL + "bindingFirewallService/", params);
 	}
 
 	/***** TAG *****/
@@ -303,6 +314,12 @@ public class SDKClient {
 		params.put("tagName", entity.getTagName());
 		params.put("serviceId", entity.getServiceId());
 		return HttpClientUtils.post(URL + "dssociateTag/", params);
+	}
+
+	/***** VMRC *****/
+
+	public static String VMRCResult(DescribeVMRCEntity entity) {
+		return HttpClientUtils.get(URL + "VMRCResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
 	/***** Zabbix *****/
