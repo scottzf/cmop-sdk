@@ -3,7 +3,7 @@ package com.sobey.sdk;
 import org.junit.Test;
 
 import com.sobey.sdk.constant.PowerEnum;
-import com.sobey.sdk.constant.SpecEnum;
+import com.sobey.sdk.constant.ECSImageEnum;
 import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
@@ -33,7 +33,7 @@ public class ECSTest {
 
 	@Test
 	public void reconfigECS() {
-		ReconfigECSEntity entity = new ReconfigECSEntity(access_key, "云生产-3", SpecEnum.CentOS6_3);
+		ReconfigECSEntity entity = new ReconfigECSEntity(access_key, "云生产-3", ECSImageEnum.CentOS6_3);
 		System.out.println(SDKClient.reconfigECS(entity));
 	}
 

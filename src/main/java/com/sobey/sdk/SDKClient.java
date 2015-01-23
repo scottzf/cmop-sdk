@@ -44,6 +44,8 @@ public class SDKClient {
 
 	private static String URL = "http://10.2.12.90:8088/cmop-api/";
 
+	// private static String URL = "http://localhost:8088/cmop-api/";
+
 	/***** ECS *****/
 
 	public static String describeECS(DescribeECSEntity entity) {
@@ -79,10 +81,13 @@ public class SDKClient {
 	}
 
 	public static String createRouter(CreateRouterEntity entity) {
+
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("routerName", entity.getRouterName());
 		params.put("remark", entity.getRemark());
-		params.put("routerSpec", entity.getRouterSpecEnum().toString());
+		params.put("imageName", entity.getRouterImageEnum().toString());
+		params.put("cpuNumber", entity.getCpuNumber().toString());
+		params.put("memoryMB", entity.getMemoryMB().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("accessKey", entity.getAccessKey());
 		params.put("firewallServiceCode", entity.getFirewallServiceCode());
@@ -95,7 +100,9 @@ public class SDKClient {
 		params.put("ecsName", entity.getEcsName());
 		params.put("subnetCode", entity.getSubnetCode());
 		params.put("remark", entity.getRemark());
-		params.put("ecsSpec", entity.getSpecEnum().toString());
+		params.put("imageName", entity.getEcsImageEnum().toString());
+		params.put("cpuNumber", entity.getCpuNumber().toString());
+		params.put("memoryMB", entity.getMemoryMB().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		return HttpClientUtils.post(URL + "createECS/", params);
 	}

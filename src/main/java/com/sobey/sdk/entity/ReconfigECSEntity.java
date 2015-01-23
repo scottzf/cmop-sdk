@@ -1,14 +1,14 @@
 package com.sobey.sdk.entity;
 
-import com.sobey.sdk.constant.SpecEnum;
+import com.sobey.sdk.constant.ECSImageEnum;
 
 public class ReconfigECSEntity {
 
 	private String accessKey;
 	private String code;
-	private SpecEnum specEnum;
+	private ECSImageEnum specEnum;
 
-	public ReconfigECSEntity(String accessKey, String code, SpecEnum specEnum) {
+	public ReconfigECSEntity(String accessKey, String code, ECSImageEnum specEnum) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;
@@ -31,11 +31,11 @@ public class ReconfigECSEntity {
 		this.code = code;
 	}
 
-	public SpecEnum getSpecEnum() {
+	public ECSImageEnum getSpecEnum() {
 		return specEnum;
 	}
 
-	public void setSpecEnum(SpecEnum specEnum) {
+	public void setSpecEnum(ECSImageEnum specEnum) {
 		this.specEnum = specEnum;
 	}
 

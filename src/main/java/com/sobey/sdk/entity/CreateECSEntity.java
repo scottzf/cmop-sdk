@@ -1,30 +1,42 @@
 package com.sobey.sdk.entity;
 
 import com.sobey.sdk.constant.IDCEnum;
-import com.sobey.sdk.constant.SpecEnum;
+import com.sobey.sdk.constant.ECSImageEnum;
 
 public class CreateECSEntity {
 
 	private String accessKey;
+	private Integer cpuNumber;
+	private ECSImageEnum ecsImageEnum;
 	private String ecsName;
 	private IDCEnum idcEnum;
+	private Integer memoryMB;
 	private String remark;
-	private SpecEnum specEnum;
 	private String subnetCode;
 
-	public CreateECSEntity(String accessKey, String ecsName, IDCEnum idcEnum, String remark, SpecEnum specEnum,
-			String subnetCode) {
+	public CreateECSEntity(String accessKey, Integer cpuNumber, ECSImageEnum ecsImageEnum, String ecsName,
+			IDCEnum idcEnum, Integer memoryMB, String remark, String subnetCode) {
 		super();
 		this.accessKey = accessKey;
+		this.cpuNumber = cpuNumber;
+		this.ecsImageEnum = ecsImageEnum;
 		this.ecsName = ecsName;
 		this.idcEnum = idcEnum;
+		this.memoryMB = memoryMB;
 		this.remark = remark;
-		this.specEnum = specEnum;
 		this.subnetCode = subnetCode;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
+	}
+
+	public Integer getCpuNumber() {
+		return cpuNumber;
+	}
+
+	public ECSImageEnum getEcsImageEnum() {
+		return ecsImageEnum;
 	}
 
 	public String getEcsName() {
@@ -35,12 +47,12 @@ public class CreateECSEntity {
 		return idcEnum;
 	}
 
-	public String getRemark() {
-		return remark;
+	public Integer getMemoryMB() {
+		return memoryMB;
 	}
 
-	public SpecEnum getSpecEnum() {
-		return specEnum;
+	public String getRemark() {
+		return remark;
 	}
 
 	public String getSubnetCode() {
@@ -51,6 +63,14 @@ public class CreateECSEntity {
 		this.accessKey = accessKey;
 	}
 
+	public void setCpuNumber(Integer cpuNumber) {
+		this.cpuNumber = cpuNumber;
+	}
+
+	public void setEcsImageEnum(ECSImageEnum ecsImageEnum) {
+		this.ecsImageEnum = ecsImageEnum;
+	}
+
 	public void setEcsName(String ecsName) {
 		this.ecsName = ecsName;
 	}
@@ -59,12 +79,12 @@ public class CreateECSEntity {
 		this.idcEnum = idcEnum;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setMemoryMB(Integer memoryMB) {
+		this.memoryMB = memoryMB;
 	}
 
-	public void setSpecEnum(SpecEnum specEnum) {
-		this.specEnum = specEnum;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public void setSubnetCode(String subnetCode) {

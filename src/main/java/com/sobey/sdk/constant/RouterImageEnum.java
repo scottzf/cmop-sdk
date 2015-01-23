@@ -1,12 +1,12 @@
 package com.sobey.sdk.constant;
 
-public enum RouterSpecEnum {
+public enum RouterImageEnum {
 
-	Default_Router("vRouter_MOD");
+	Standard_Router("vRouter_Telnet");
 
 	private String value;
 
-	private RouterSpecEnum(String value) {
+	private RouterImageEnum(String value) {
 
 		this.value = value;
 	}
