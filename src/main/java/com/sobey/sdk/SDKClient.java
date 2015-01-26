@@ -6,7 +6,7 @@ import java.util.Map;
 import com.sobey.sdk.entity.AllocateEIPEntity;
 import com.sobey.sdk.entity.AssociateEIPEntity;
 import com.sobey.sdk.entity.AssociateTagEntity;
-import com.sobey.sdk.entity.AttachES3Entity;
+import com.sobey.sdk.entity.BindingES3Entity;
 import com.sobey.sdk.entity.BindingFirewallServiceEntity;
 import com.sobey.sdk.entity.BindingRouterEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
@@ -148,12 +148,12 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "createES3/", params);
 	}
 
-	public static String attachES3(AttachES3Entity entity) {
+	public static String bindingES3(BindingES3Entity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Name", entity.getEs3Name());
-		params.put("ecsName", entity.getEcsName());
-		return HttpClientUtils.post(URL + "attachES3/", params);
+		params.put("es3code", entity.getEs3Code());
+		params.put("ecscode", entity.getEcsCode());
+		return HttpClientUtils.post(URL + "bindingES3/", params);
 	}
 
 	public static String detachES3(DetachES3Entity entity) {
