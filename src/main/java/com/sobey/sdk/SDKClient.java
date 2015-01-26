@@ -144,7 +144,6 @@ public class SDKClient {
 		params.put("es3Type", entity.getEs3TypeEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
 		params.put("remark", entity.getRemark());
-		params.put("ecsCode", entity.getEcsCode());
 		return HttpClientUtils.post(URL + "createES3/", params);
 	}
 
