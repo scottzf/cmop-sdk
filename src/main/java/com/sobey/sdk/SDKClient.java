@@ -150,8 +150,8 @@ public class SDKClient {
 	public static String bindingES3(BindingES3Entity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3code", entity.getEs3Code());
-		params.put("ecscode", entity.getEcsCode());
+		params.put("es3Code", entity.getEs3Code());
+		params.put("ecsCode", entity.getEcsCode());
 		return HttpClientUtils.post(URL + "bindingES3/", params);
 	}
 
