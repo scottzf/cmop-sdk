@@ -52,8 +52,7 @@ public class APITest {
 
 	@Test
 	public void createES3() {
-		CreateES3Entity entity = new CreateES3Entity(accessKey, "ECS-IyP7o6r7", "存储A", 50, ES3TypeEnum.高IOPS,
-				IDCEnum.成都核心数据中心, "");
+		CreateES3Entity entity = new CreateES3Entity(accessKey, "AAA", 10, ES3TypeEnum.高IOPS, IDCEnum.成都核心数据中心, "");
 		System.out.println(SDKClient.createES3(entity));
 	}
 
