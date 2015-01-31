@@ -34,7 +34,6 @@ import com.sobey.sdk.entity.DetachES3Entity;
 import com.sobey.sdk.entity.DissociateEIPEntity;
 import com.sobey.sdk.entity.DissociateTagEntity;
 import com.sobey.sdk.entity.MonitorECSEntity;
-import com.sobey.sdk.entity.MonitorES3Entity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
 import com.sobey.sdk.entity.ReconfigECSEntity;
 import com.sobey.sdk.entity.RecoverEIPEntity;
@@ -325,28 +324,19 @@ public class SDKClient {
 	/***** VMRC *****/
 
 	public static String VMRCResult(DescribeVMRCEntity entity) {
-		return HttpClientUtils.get(URL + "VMRCResult/" + entity.getCode() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "VMRCResult/" + entity.getEcsCode() + "/" + entity.getAccessKey());
 	}
 
 	/***** Zabbix *****/
 
 	public static String monitorECS(MonitorECSEntity entity) {
-		return HttpClientUtils.get(URL + "currentData/" + entity.getEcsName() + "/" + entity.getEcsMonitorItemEnum()
+		return HttpClientUtils.get(URL + "currentData/" + entity.getEcsCode() + "/" + entity.getEcsMonitorItemEnum()
 				+ "/" + entity.getAccessKey());
 	}
 
 	public static String monitorHistoryECS(MonitorECSEntity entity) {
-		return HttpClientUtils.get(URL + "historyData/" + entity.getEcsName() + "/" + entity.getEcsMonitorItemEnum()
+		return HttpClientUtils.get(URL + "historyData/" + entity.getEcsCode() + "/" + entity.getEcsMonitorItemEnum()
 				+ "/" + entity.getAccessKey());
 	}
 
-	public static String monitorES3(MonitorES3Entity entity) {
-		return HttpClientUtils.get(URL + "storageCurrentData/" + entity.getEs3Name() + "/"
-				+ entity.getEs3MonitorItemEnum() + "/" + entity.getAccessKey());
-	}
-
-	public static String monitorHistoryES3(MonitorES3Entity entity) {
-		return HttpClientUtils.get(URL + "storageHistoryData/" + entity.getEs3Name() + "/"
-				+ entity.getEs3MonitorItemEnum() + "/" + entity.getAccessKey());
-	}
 }

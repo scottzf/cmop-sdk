@@ -2,8 +2,8 @@ package com.sobey.sdk;
 
 import org.junit.Test;
 
-import com.sobey.sdk.constant.PowerEnum;
 import com.sobey.sdk.constant.ECSImageEnum;
+import com.sobey.sdk.constant.PowerEnum;
 import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;

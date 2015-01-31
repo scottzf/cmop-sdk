@@ -1,7 +1,7 @@
 package com.sobey.sdk.entity;
 
-import com.sobey.sdk.constant.IDCEnum;
 import com.sobey.sdk.constant.ECSImageEnum;
+import com.sobey.sdk.constant.IDCEnum;
 
 public class CreateECSEntity {
 

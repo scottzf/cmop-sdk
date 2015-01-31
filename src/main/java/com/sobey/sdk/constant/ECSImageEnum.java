@@ -2,7 +2,7 @@ package com.sobey.sdk.constant;
 
 public enum ECSImageEnum {
 
-	CentOS6_3("Centos 6.3 MOD 25G"), Windows_2008_R2("Windows 2008 R2 Mod");
+	CentOS6_3("Centos 6.3 MOD 25G"), Windows_2008_R2("Windows 2008 R2 Mod"), Windows_7("Windows 7  64  40G MOD");
 
 	private String value;
 
