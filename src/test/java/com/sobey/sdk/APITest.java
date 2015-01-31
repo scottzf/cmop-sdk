@@ -14,6 +14,7 @@ import com.sobey.sdk.constant.ISPEnum;
 import com.sobey.sdk.constant.RouterImageEnum;
 import com.sobey.sdk.entity.AllocateEIPEntity;
 import com.sobey.sdk.entity.AssociateEIPEntity;
+import com.sobey.sdk.entity.BindingES3Entity;
 import com.sobey.sdk.entity.BindingFirewallServiceEntity;
 import com.sobey.sdk.entity.BindingRouterEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
@@ -27,7 +28,7 @@ import com.sobey.sdk.entity.DescribeVMRCEntity;
 
 public class APITest {
 
-	private static String accessKey = "c1Y3UElWVUJkRHRSSThWMg==";
+	private static String accessKey = "MzRPOXhScXE1N3dRc3VRMQ==";
 
 	@Test
 	public void createTenants() {
@@ -37,15 +38,15 @@ public class APITest {
 
 	@Test
 	public void createSubnet() {
-		CreateSubnetEntity entity = new CreateSubnetEntity(accessKey, "192.168.200.1", IDCEnum.成都核心数据中心,
-				"255.255.255.0", "192.168.200.0", "200网段");
+		CreateSubnetEntity entity = new CreateSubnetEntity(accessKey, "192.168.100.254", IDCEnum.成都核心数据中心,
+				"255.255.255.0", "192.168.100.0", "100网段");
 		System.out.println(SDKClient.createSubnet(entity));
 	}
 
 	@Test
 	public void createECS() {
-		CreateECSEntity entity = new CreateECSEntity(accessKey, 4, ECSImageEnum.CentOS6_3, "200网段主机B",
-				IDCEnum.成都核心数据中心, 4096, "", "Subnet-O1f2uSdk");
+		CreateECSEntity entity = new CreateECSEntity(accessKey, 4, ECSImageEnum.Windows_2008_R2, "默认网段主机A",
+				IDCEnum.成都核心数据中心, 4096, "", "Subnet-49APKgC0");
 		System.out.println(SDKClient.createECS(entity));
 
 	}
@@ -54,6 +55,12 @@ public class APITest {
 	public void createES3() {
 		CreateES3Entity entity = new CreateES3Entity(accessKey, "AAA", 10, ES3TypeEnum.高IOPS, IDCEnum.成都核心数据中心, "");
 		System.out.println(SDKClient.createES3(entity));
+	}
+
+	@Test
+	public void bindingES3() {
+		BindingES3Entity entity = new BindingES3Entity(accessKey, "ECS-mZYJ1IOw", "ES3-bBIe30j6");
+		System.out.println(SDKClient.bindingES3(entity));
 	}
 
 	@Test
@@ -67,15 +74,15 @@ public class APITest {
 
 	@Test
 	public void createRouter() {
-		CreateRouterEntity entity = new CreateRouterEntity(accessKey, 1, "FirewallService-5GLF5m25", IDCEnum.成都核心数据中心,
+		CreateRouterEntity entity = new CreateRouterEntity(accessKey, 1, "FirewallService-B3Oousio", IDCEnum.成都核心数据中心,
 				1024, "", RouterImageEnum.Standard_Router, "默认Router");
 		System.out.println(SDKClient.createRouter(entity));
 	}
 
 	@Test
 	public void bindingRouter() {
-		BindingRouterEntity entity = new BindingRouterEntity(accessKey, "Router-wcl85hO8",
-				"Subnet-O1f2uSdk,Subnet-JJP4ssF4");
+		BindingRouterEntity entity = new BindingRouterEntity(accessKey, "Router-gVLHzJXQ",
+				"Subnet-49APKgC0,Subnet-E0ZSZLKy");
 		System.out.println(SDKClient.bindingRouter(entity));
 	}
 
@@ -107,8 +114,8 @@ public class APITest {
 	}
 
 	@Test
-	public void ddd() {
-		DescribeVMRCEntity entity = new DescribeVMRCEntity(accessKey, "Tenants-zOw0lt4c");
+	public void VMRCResult() {
+		DescribeVMRCEntity entity = new DescribeVMRCEntity(accessKey, "ECS-UzFMOf1Z");
 		System.out.println(SDKClient.VMRCResult(entity));
 	}
 
