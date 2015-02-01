@@ -11,19 +11,19 @@ import com.sobey.sdk.entity.MonitorECSEntity;
  */
 public class ZabbixTest {
 
-	private static String access_key = "YWNjZXNza2V5NzU2NA=1";
+	private static String access_key = "cnp4RFViRVNTQzl4UWJFRA==";
 
 	@Test
 	public void monitorHistoryECS() {
-		MonitorECSEntity entity = new MonitorECSEntity(access_key, "liukai02@sobey.com-10.10.101.1",
-				ECSMonitorItemEnum.CPU使用情况);
+		MonitorECSEntity entity = new MonitorECSEntity(access_key, "Tenants-7Io6mxdH-172.16.0.6",
+				ECSMonitorItemEnum.CPU);
 		System.out.println(SDKClient.monitorHistoryECS(entity));
 	}
 
 	@Test
 	public void monitorECS() {
-		MonitorECSEntity entity = new MonitorECSEntity(access_key, "liukai02@sobey.com-10.10.101.1",
-				ECSMonitorItemEnum.CPU使用情况);
+		MonitorECSEntity entity = new MonitorECSEntity(access_key, "Tenants-7Io6mxdH-172.16.0.6",
+				ECSMonitorItemEnum.CPU);
 		System.out.println(SDKClient.monitorECS(entity));
 	}
 
