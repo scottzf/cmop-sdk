@@ -8,7 +8,7 @@ import com.sobey.sdk.constant.ISPEnum;
  * @author Administrator
  *
  */
-public class AllocateEIPEntity {
+public class CreateEIPEntity {
 
 	private String accessKey;
 	private ISPEnum ispEnum;
@@ -18,8 +18,8 @@ public class AllocateEIPEntity {
 	private String remark;
 	private String bandwidth;
 
-	public AllocateEIPEntity(String accessKey, ISPEnum ispEnum, String protocols, String sourcePorts,
-			String targetPorts, String remark, String bandwidth) {
+	public CreateEIPEntity(String accessKey, ISPEnum ispEnum, String protocols, String sourcePorts, String targetPorts,
+			String remark, String bandwidth) {
 		super();
 		this.accessKey = accessKey;
 		this.ispEnum = ispEnum;

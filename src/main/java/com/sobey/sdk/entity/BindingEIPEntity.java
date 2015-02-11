@@ -1,12 +1,12 @@
 package com.sobey.sdk.entity;
 
-public class AssociateEIPEntity {
+public class BindingEIPEntity {
 
 	private String accessKey;
 	private String code;
 	private String serviceCode;
 
-	public AssociateEIPEntity(String accessKey, String code, String serviceCode) {
+	public BindingEIPEntity(String accessKey, String code, String serviceCode) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;

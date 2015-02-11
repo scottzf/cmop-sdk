@@ -5,7 +5,7 @@
 	<groupId>com.sobey</groupId>
 	<artifactId>cmop-sdk</artifactId>
 	<packaging>jar</packaging>
-	<version>1.2.2</version>
+	<version>1.2.3</version>
 	<name>cmop-sdk</name>
 	<description> CMOP IaaS SDK demo for Java</description>
 

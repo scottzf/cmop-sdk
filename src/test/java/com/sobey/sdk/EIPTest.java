@@ -3,11 +3,11 @@ package com.sobey.sdk;
 import org.junit.Test;
 
 import com.sobey.sdk.constant.ISPEnum;
-import com.sobey.sdk.entity.AllocateEIPEntity;
-import com.sobey.sdk.entity.AssociateEIPEntity;
+import com.sobey.sdk.entity.BindingEIPEntity;
+import com.sobey.sdk.entity.CreateEIPEntity;
+import com.sobey.sdk.entity.DeleteEIPEntity;
 import com.sobey.sdk.entity.DescribeEIPEntity;
-import com.sobey.sdk.entity.DissociateEIPEntity;
-import com.sobey.sdk.entity.RecoverEIPEntity;
+import com.sobey.sdk.entity.UnbindingEIPEntity;
 
 public class EIPTest {
 
@@ -20,27 +20,27 @@ public class EIPTest {
 	}
 
 	@Test
-	public void allocateEIP() {
-		AllocateEIPEntity entity = new AllocateEIPEntity(access_key, ISPEnum.中国联通, "TCP", "80", "80", "sdk_test", "1");
-		System.out.println(SDKClient.allocateEIP(entity));
+	public void createEIP() {
+		CreateEIPEntity entity = new CreateEIPEntity(access_key, ISPEnum.中国联通, "TCP", "80", "80", "sdk_test", "1");
+		System.out.println(SDKClient.createEIP(entity));
 	}
 
 	@Test
-	public void recoverEIP() {
-		RecoverEIPEntity entity = new RecoverEIPEntity(access_key, "119.6.200.201");
-		System.out.println(SDKClient.recoverEIP(entity));
+	public void deleteEIP() {
+		DeleteEIPEntity entity = new DeleteEIPEntity(access_key, "119.6.200.201");
+		System.out.println(SDKClient.deleteEIP(entity));
 	}
 
 	@Test
-	public void associateEIP() {
-		AssociateEIPEntity entity = new AssociateEIPEntity(access_key, "119.6.200.202", "10.10.2.54");
-		System.out.println(SDKClient.associateEIP(entity));
+	public void bindingEIP() {
+		BindingEIPEntity entity = new BindingEIPEntity(access_key, "119.6.200.202", "10.10.2.54");
+		System.out.println(SDKClient.bindingEIP(entity));
 	}
 
 	@Test
-	public void dissociateEIP() {
-		DissociateEIPEntity entity = new DissociateEIPEntity(access_key, "119.6.200.202", "10.10.2.54");
-		System.out.println(SDKClient.dissociateEIP(entity));
+	public void unbindingEIP() {
+		UnbindingEIPEntity entity = new UnbindingEIPEntity(access_key, "119.6.200.202", "10.10.2.54");
+		System.out.println(SDKClient.unbindingEIP(entity));
 	}
 
 }

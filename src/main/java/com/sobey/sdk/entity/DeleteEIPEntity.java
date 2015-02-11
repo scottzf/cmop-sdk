@@ -1,16 +1,14 @@
 package com.sobey.sdk.entity;
 
-public class DissociateEIPEntity {
+public class DeleteEIPEntity {
 
 	private String accessKey;
 	private String code;
-	private String serviceCode;
 
-	public DissociateEIPEntity(String accessKey, String code, String serviceCode) {
+	public DeleteEIPEntity(String accessKey, String code) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;
-		this.serviceCode = serviceCode;
 	}
 
 	public String getAccessKey() {
@@ -27,14 +25,6 @@ public class DissociateEIPEntity {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public String getServiceCode() {
-		return serviceCode;
-	}
-
-	public void setServiceCode(String serviceCode) {
-		this.serviceCode = serviceCode;
 	}
 
 }

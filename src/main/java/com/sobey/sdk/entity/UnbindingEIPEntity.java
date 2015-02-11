@@ -1,14 +1,16 @@
 package com.sobey.sdk.entity;
 
-public class RecoverEIPEntity {
+public class UnbindingEIPEntity {
 
 	private String accessKey;
 	private String code;
+	private String serviceCode;
 
-	public RecoverEIPEntity(String accessKey, String code) {
+	public UnbindingEIPEntity(String accessKey, String code, String serviceCode) {
 		super();
 		this.accessKey = accessKey;
 		this.code = code;
+		this.serviceCode = serviceCode;
 	}
 
 	public String getAccessKey() {
@@ -25,6 +27,14 @@ public class RecoverEIPEntity {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getServiceCode() {
+		return serviceCode;
+	}
+
+	public void setServiceCode(String serviceCode) {
+		this.serviceCode = serviceCode;
 	}
 
 }

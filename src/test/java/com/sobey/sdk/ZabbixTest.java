@@ -15,8 +15,7 @@ public class ZabbixTest {
 
 	@Test
 	public void monitorHistoryECS() {
-		MonitorECSEntity entity = new MonitorECSEntity(access_key, "ECS-JygamE6a",
-				ECSMonitorItemEnum.CPU);
+		MonitorECSEntity entity = new MonitorECSEntity(access_key, "ECS-JygamE6a", ECSMonitorItemEnum.CPU);
 		System.out.println(SDKClient.monitorHistoryECS(entity));
 	}
 

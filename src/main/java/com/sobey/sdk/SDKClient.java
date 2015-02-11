@@ -3,14 +3,15 @@ package com.sobey.sdk;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sobey.sdk.entity.AllocateEIPEntity;
-import com.sobey.sdk.entity.AssociateEIPEntity;
 import com.sobey.sdk.entity.AssociateTagEntity;
+import com.sobey.sdk.entity.BindingEIPEntity;
+import com.sobey.sdk.entity.BindingEIPToRouterEntity;
 import com.sobey.sdk.entity.BindingES3Entity;
 import com.sobey.sdk.entity.BindingFirewallServiceEntity;
 import com.sobey.sdk.entity.BindingRouterEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
+import com.sobey.sdk.entity.CreateEIPEntity;
 import com.sobey.sdk.entity.CreateELBEntity;
 import com.sobey.sdk.entity.CreateES3Entity;
 import com.sobey.sdk.entity.CreateFirewallServiceEntity;
@@ -19,6 +20,7 @@ import com.sobey.sdk.entity.CreateSubnetEntity;
 import com.sobey.sdk.entity.CreateTagEntity;
 import com.sobey.sdk.entity.CreateTenantsEntity;
 import com.sobey.sdk.entity.DeleteDNSEntity;
+import com.sobey.sdk.entity.DeleteEIPEntity;
 import com.sobey.sdk.entity.DeleteELBEntity;
 import com.sobey.sdk.entity.DeleteES3Entity;
 import com.sobey.sdk.entity.DeleteTagEntity;
@@ -31,12 +33,11 @@ import com.sobey.sdk.entity.DescribeTagEntity;
 import com.sobey.sdk.entity.DescribeVMRCEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.DetachES3Entity;
-import com.sobey.sdk.entity.DissociateEIPEntity;
 import com.sobey.sdk.entity.DissociateTagEntity;
 import com.sobey.sdk.entity.MonitorECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
 import com.sobey.sdk.entity.ReconfigECSEntity;
-import com.sobey.sdk.entity.RecoverEIPEntity;
+import com.sobey.sdk.entity.UnbindingEIPEntity;
 import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
@@ -178,7 +179,7 @@ public class SDKClient {
 	public static String createELB(CreateELBEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("ecsNames", entity.getEcsNames());
+		params.put("ecsCodes", entity.getEcsCodes());
 		params.put("protocols", entity.getProtocols());
 		return HttpClientUtils.post(URL + "createELB/", params);
 	}
@@ -196,7 +197,7 @@ public class SDKClient {
 		return HttpClientUtils.get(URL + "EIPResult/" + entity.getCode() + "/" + entity.getAccessKey());
 	}
 
-	public static String allocateEIP(AllocateEIPEntity entity) {
+	public static String createEIP(CreateEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
 		params.put("isp", entity.getIspEnum().toString());
@@ -205,30 +206,38 @@ public class SDKClient {
 		params.put("protocols", entity.getProtocols());
 		params.put("sourcePorts", entity.getSourcePorts());
 		params.put("targetPorts", entity.getTargetPorts());
-		return HttpClientUtils.post(URL + "allocateEIP/", params);
+		return HttpClientUtils.post(URL + "createEIP/", params);
 	}
 
-	public static String recoverEIP(RecoverEIPEntity entity) {
+	public static String deleteEIP(DeleteEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
 		params.put("code", entity.getCode());
-		return HttpClientUtils.post(URL + "recoverEIP/", params);
+		return HttpClientUtils.post(URL + "deleteEIP/", params);
 	}
 
-	public static String associateEIP(AssociateEIPEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
-		params.put("serviceCode", entity.getServiceCode());
-		return HttpClientUtils.post(URL + "associateEIP/", params);
-	}
-
-	public static String dissociateEIP(DissociateEIPEntity entity) {
+	public static String bindingEIP(BindingEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
 		params.put("code", entity.getCode());
 		params.put("serviceCode", entity.getServiceCode());
-		return HttpClientUtils.post(URL + "dissociateEIP/", params);
+		return HttpClientUtils.post(URL + "bindingEIP/", params);
+	}
+
+	public static String unbindingEIP(UnbindingEIPEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("code", entity.getCode());
+		params.put("serviceCode", entity.getServiceCode());
+		return HttpClientUtils.post(URL + "unbindingEIP/", params);
+	}
+
+	public static String bindingEIPToRouter(BindingEIPToRouterEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("eipCode", entity.getEipCode());
+		params.put("routerCode", entity.getRouterCode());
+		return HttpClientUtils.post(URL + "bindingEIPToRouter/", params);
 	}
 
 	/***** DNS *****/

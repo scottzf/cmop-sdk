@@ -12,13 +12,15 @@ import com.sobey.sdk.constant.FirewallProtocolEnum;
 import com.sobey.sdk.constant.IDCEnum;
 import com.sobey.sdk.constant.ISPEnum;
 import com.sobey.sdk.constant.RouterImageEnum;
-import com.sobey.sdk.entity.AllocateEIPEntity;
-import com.sobey.sdk.entity.AssociateEIPEntity;
+import com.sobey.sdk.entity.BindingEIPEntity;
+import com.sobey.sdk.entity.BindingEIPToRouterEntity;
 import com.sobey.sdk.entity.BindingES3Entity;
 import com.sobey.sdk.entity.BindingFirewallServiceEntity;
 import com.sobey.sdk.entity.BindingRouterEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
+import com.sobey.sdk.entity.CreateEIPEntity;
+import com.sobey.sdk.entity.CreateELBEntity;
 import com.sobey.sdk.entity.CreateES3Entity;
 import com.sobey.sdk.entity.CreateFirewallServiceEntity;
 import com.sobey.sdk.entity.CreateRouterEntity;
@@ -28,7 +30,7 @@ import com.sobey.sdk.entity.DescribeVMRCEntity;
 
 public class APITest {
 
-	private static String accessKey = "MzRPOXhScXE1N3dRc3VRMQ==";
+	private static String accessKey = "ejg0NlVTMldEWE9NaGRBUw==";
 
 	@Test
 	public void createTenants() {
@@ -38,15 +40,15 @@ public class APITest {
 
 	@Test
 	public void createSubnet() {
-		CreateSubnetEntity entity = new CreateSubnetEntity(accessKey, "192.168.100.254", IDCEnum.成都核心数据中心,
-				"255.255.255.0", "192.168.100.0", "100网段");
+		CreateSubnetEntity entity = new CreateSubnetEntity(accessKey, "172.16.200.254", IDCEnum.成都核心数据中心,
+				"255.255.255.0", "172.16.200.0", "200网段");
 		System.out.println(SDKClient.createSubnet(entity));
 	}
 
 	@Test
 	public void createECS() {
-		CreateECSEntity entity = new CreateECSEntity(accessKey, 4, ECSImageEnum.Windows_2008_R2, "默认网段主机A",
-				IDCEnum.成都核心数据中心, 4096, "", "Subnet-49APKgC0");
+		CreateECSEntity entity = new CreateECSEntity(accessKey, 4, ECSImageEnum.CentOS6_3, "200网段主机A",
+				IDCEnum.成都核心数据中心, 4096, "", "Subnet-DSm67IID");
 		System.out.println(SDKClient.createECS(entity));
 
 	}
@@ -59,7 +61,7 @@ public class APITest {
 
 	@Test
 	public void bindingES3() {
-		BindingES3Entity entity = new BindingES3Entity(accessKey, "ECS-mZYJ1IOw", "ES3-bBIe30j6");
+		BindingES3Entity entity = new BindingES3Entity(accessKey, "ECS-Ue25DEIU", "ES3-OoyKJeyk");
 		System.out.println(SDKClient.bindingES3(entity));
 	}
 
@@ -74,15 +76,15 @@ public class APITest {
 
 	@Test
 	public void createRouter() {
-		CreateRouterEntity entity = new CreateRouterEntity(accessKey, 1, "FirewallService-B3Oousio", IDCEnum.成都核心数据中心,
+		CreateRouterEntity entity = new CreateRouterEntity(accessKey, 1, "FirewallService-L8KXWWH3", IDCEnum.成都核心数据中心,
 				1024, "", RouterImageEnum.Standard_Router, "默认Router");
 		System.out.println(SDKClient.createRouter(entity));
 	}
 
 	@Test
 	public void bindingRouter() {
-		BindingRouterEntity entity = new BindingRouterEntity(accessKey, "Router-gVLHzJXQ",
-				"Subnet-49APKgC0,Subnet-E0ZSZLKy");
+		BindingRouterEntity entity = new BindingRouterEntity(accessKey, "Router-KaSDNvEr",
+				"Subnet-DSm67IID,Subnet-cbsp78pa");
 		System.out.println(SDKClient.bindingRouter(entity));
 	}
 
@@ -94,16 +96,28 @@ public class APITest {
 	}
 
 	@Test
-	public void allocateEIP() {
-		AllocateEIPEntity entity = new AllocateEIPEntity(accessKey, ISPEnum.中国电信, EIPProtocolEnum.TCP.toString(), "80",
-				"80", "", "1");
-		System.out.println(SDKClient.allocateEIP(entity));
+	public void createELB() {
+		CreateELBEntity entity = new CreateELBEntity(accessKey, "ECS-rNh6uPBw,ECS-Ue25DEIU", "HTTP,HTTP");
+		System.out.println(SDKClient.createELB(entity));
 	}
 
 	@Test
-	public void associateEIP() {
-		AssociateEIPEntity entity = new AssociateEIPEntity(accessKey, "EIP-oNRIYmcW", "ECS-GZflgBIc");
-		System.out.println(SDKClient.associateEIP(entity));
+	public void createEIP() {
+		CreateEIPEntity entity = new CreateEIPEntity(accessKey, ISPEnum.中国电信, EIPProtocolEnum.TCP.toString(), "80",
+				"80", "", "1");
+		System.out.println(SDKClient.createEIP(entity));
+	}
+
+	@Test
+	public void bindingEIPToRouter() {
+		BindingEIPToRouterEntity entity = new BindingEIPToRouterEntity(accessKey, "EIP-j0sf8jd3", "Router-KaSDNvEr");
+		System.out.println(SDKClient.bindingEIPToRouter(entity));
+	}
+
+	@Test
+	public void bindingEIP() {
+		BindingEIPEntity entity = new BindingEIPEntity(accessKey, "EIP-nxDTVUpl", "ELB-IfPYH837");
+		System.out.println(SDKClient.bindingEIP(entity));
 	}
 
 	@Test
