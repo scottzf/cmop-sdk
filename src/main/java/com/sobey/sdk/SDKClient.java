@@ -3,53 +3,59 @@ package com.sobey.sdk;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sobey.sdk.entity.AssociateTagEntity;
 import com.sobey.sdk.entity.BindingEIPEntity;
 import com.sobey.sdk.entity.BindingEIPToRouterEntity;
-import com.sobey.sdk.entity.BindingES3Entity;
-import com.sobey.sdk.entity.BindingFirewallServiceEntity;
+import com.sobey.sdk.entity.BindingFirewallEntity;
 import com.sobey.sdk.entity.BindingRouterEntity;
+import com.sobey.sdk.entity.BindingVolumeEntity;
 import com.sobey.sdk.entity.CreateDNSEntity;
 import com.sobey.sdk.entity.CreateECSEntity;
 import com.sobey.sdk.entity.CreateEIPEntity;
 import com.sobey.sdk.entity.CreateELBEntity;
-import com.sobey.sdk.entity.CreateES3Entity;
-import com.sobey.sdk.entity.CreateFirewallServiceEntity;
+import com.sobey.sdk.entity.CreateELBRuleEntity;
+import com.sobey.sdk.entity.CreateFirewallEntity;
 import com.sobey.sdk.entity.CreateRouterEntity;
 import com.sobey.sdk.entity.CreateSubnetEntity;
-import com.sobey.sdk.entity.CreateTagEntity;
 import com.sobey.sdk.entity.CreateTenantsEntity;
+import com.sobey.sdk.entity.CreateVolumeEntity;
 import com.sobey.sdk.entity.DeleteDNSEntity;
 import com.sobey.sdk.entity.DeleteEIPEntity;
 import com.sobey.sdk.entity.DeleteELBEntity;
-import com.sobey.sdk.entity.DeleteES3Entity;
-import com.sobey.sdk.entity.DeleteTagEntity;
+import com.sobey.sdk.entity.DeleteELBRuleEntity;
+import com.sobey.sdk.entity.DeleteFirewallEntity;
+import com.sobey.sdk.entity.DeleteRouterEntity;
+import com.sobey.sdk.entity.DeleteVolumeEntity;
 import com.sobey.sdk.entity.DescribeDNSEntity;
 import com.sobey.sdk.entity.DescribeECSEntity;
 import com.sobey.sdk.entity.DescribeEIPEntity;
 import com.sobey.sdk.entity.DescribeELBEntity;
-import com.sobey.sdk.entity.DescribeES3Entity;
-import com.sobey.sdk.entity.DescribeTagEntity;
+import com.sobey.sdk.entity.DescribeELBRuleEntity;
+import com.sobey.sdk.entity.DescribeFirewallEntity;
+import com.sobey.sdk.entity.DescribeRouterEntity;
+import com.sobey.sdk.entity.DescribeSubnetEntity;
 import com.sobey.sdk.entity.DescribeVMRCEntity;
+import com.sobey.sdk.entity.DescribeVolumeEntity;
 import com.sobey.sdk.entity.DestroyECSEntity;
-import com.sobey.sdk.entity.DetachES3Entity;
-import com.sobey.sdk.entity.DissociateTagEntity;
 import com.sobey.sdk.entity.MonitorECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
-import com.sobey.sdk.entity.ReconfigECSEntity;
 import com.sobey.sdk.entity.UnbindingEIPEntity;
+import com.sobey.sdk.entity.UpdateELBEntity;
+import com.sobey.sdk.entity.UpdateELBRuleEntity;
+import com.sobey.sdk.entity.UpdateFirewallEntity;
+import com.sobey.sdk.entity.UpdateRouterEntity;
+import com.sobey.sdk.entity.UpdateSubnetEntity;
 import com.sobey.sdk.utils.HttpClientUtils;
 
 public class SDKClient {
 
-	private static String URL = "http://10.2.12.90:8088/cmop-api/";
+	// private static String URL = "http://10.2.12.90:8088/cmop-api/";
 
-	// private static String URL = "http://localhost:8088/cmop-api/";
+	private static String URL = "http://localhost:8088/cmop-api/";
 
-	/***** ECS *****/
+	/********** Tenants ***********/
 
-	public static String describeECS(DescribeECSEntity entity) {
-		return HttpClientUtils.get(URL + "ECSResult/" + entity.getCode() + "/" + entity.getAccessKey());
+	public static String describeTenants(DescribeTenants entity) {
+		return HttpClientUtils.get(URL + "TenantsResult/" + entity.getAccessKey());
 	}
 
 	public static String createTenants(CreateTenantsEntity entity) {
@@ -59,6 +65,12 @@ public class SDKClient {
 		params.put("email", entity.getEmail());
 		params.put("phone", entity.getPhone());
 		return HttpClientUtils.post(URL + "createTenants/", params);
+	}
+
+	/********** Subnet ***********/
+
+	public static String describeVolume(DescribeSubnetEntity entity) {
+		return HttpClientUtils.get(URL + "SubnetResult/" + entity.getSubnetCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createSubnet(CreateSubnetEntity entity) {
@@ -72,6 +84,33 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "createSubnet/", params);
 	}
 
+	public static String updateSubnet(UpdateSubnetEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("subnetName", entity.getSubnetName());
+		params.put("subnetCode", entity.getSubnetCode());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "updateSubnet/", params);
+	}
+
+	/********** Router ***********/
+
+	public static String describeRouter(DescribeRouterEntity entity) {
+		return HttpClientUtils.get(URL + "RouterResult/" + entity.getRouterCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createRouter(CreateRouterEntity entity) {
+
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("routerName", entity.getRouterName());
+		params.put("imageName", entity.getImageEnum().toString());
+		params.put("cpuNumber", entity.getCpuNumber().toString());
+		params.put("memoryMB", entity.getMemoryMB().toString());
+		params.put("idc", entity.getIdcEnum().toString());
+		params.put("accessKey", entity.getAccessKey());
+		params.put("firewallCode", entity.getFirewallCode());
+		return HttpClientUtils.post(URL + "createRouter/", params);
+	}
+
 	public static String bindingRouter(BindingRouterEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("routerCode", entity.getRouterCode());
@@ -80,18 +119,25 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "bindingRouter/", params);
 	}
 
-	public static String createRouter(CreateRouterEntity entity) {
-
+	public static String deleteRouter(DeleteRouterEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("routerName", entity.getRouterName());
-		params.put("remark", entity.getRemark());
-		params.put("imageName", entity.getRouterImageEnum().toString());
-		params.put("cpuNumber", entity.getCpuNumber().toString());
-		params.put("memoryMB", entity.getMemoryMB().toString());
-		params.put("idc", entity.getIdcEnum().toString());
+		params.put("routerCode", entity.getRouterCode());
 		params.put("accessKey", entity.getAccessKey());
-		params.put("firewallServiceCode", entity.getFirewallServiceCode());
-		return HttpClientUtils.post(URL + "createRouter/", params);
+		return HttpClientUtils.post(URL + "deleteRouter/", params);
+	}
+
+	public static String updateRouter(UpdateRouterEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("routerCode", entity.getRouterCode());
+		params.put("accessKey", entity.getAccessKey());
+		params.put("routerName", entity.getRouterName());
+		return HttpClientUtils.post(URL + "updateRouter/", params);
+	}
+
+	/********** ECS ***********/
+
+	public static String describeECS(DescribeECSEntity entity) {
+		return HttpClientUtils.get(URL + "ECSResult/" + entity.getEcsCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createECS(CreateECSEntity entity) {
@@ -99,8 +145,7 @@ public class SDKClient {
 		params.put("accessKey", entity.getAccessKey());
 		params.put("ecsName", entity.getEcsName());
 		params.put("subnetCode", entity.getSubnetCode());
-		params.put("remark", entity.getRemark());
-		params.put("imageName", entity.getEcsImageEnum().toString());
+		params.put("imageName", entity.getImageEnum().toString());
 		params.put("cpuNumber", entity.getCpuNumber().toString());
 		params.put("memoryMB", entity.getMemoryMB().toString());
 		params.put("idc", entity.getIdcEnum().toString());
@@ -110,98 +155,126 @@ public class SDKClient {
 	public static String destroyECS(DestroyECSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
+		params.put("ecsCode", entity.getEcsCode());
 		return HttpClientUtils.post(URL + "destroyECS/", params);
 	}
 
 	public static String powerOpsECS(PowerOpsECSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
+		params.put("ecsCode", entity.getEcsCode());
 		params.put("powerOperation", entity.getPowerEnum().toString());
 		return HttpClientUtils.post(URL + "powerOpsECS/", params);
 	}
 
-	public static String reconfigECS(ReconfigECSEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
-		params.put("ecsSpec", entity.getSpecEnum().toString());
-		return HttpClientUtils.post(URL + "reconfigECS/", params);
+	/***** Volume *****/
+
+	public static String describeVolume(DescribeVolumeEntity entity) {
+		return HttpClientUtils.get(URL + "VolumeResult/" + entity.getVolumeCode() + "/" + entity.getAccessKey());
 	}
 
-	/***** ES3 *****/
-
-	public static String describeES3(DescribeES3Entity entity) {
-		return HttpClientUtils.get(URL + "ES3Result/" + entity.getCode() + "/" + entity.getAccessKey());
-	}
-
-	public static String createES3(CreateES3Entity entity) {
+	public static String createVolume(CreateVolumeEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Name", entity.getEs3Name());
-		params.put("es3Size", entity.getEs3Size().toString());
-		params.put("es3Type", entity.getEs3TypeEnum().toString());
+		params.put("volumeName", entity.getVolumeName());
+		params.put("size", entity.getSize().toString());
+		params.put("volumeType", entity.getVolumeTypeEnum().toString());
 		params.put("idc", entity.getIdcEnum().toString());
-		params.put("remark", entity.getRemark());
-		return HttpClientUtils.post(URL + "createES3/", params);
+		return HttpClientUtils.post(URL + "createVolume/", params);
 	}
 
-	public static String bindingES3(BindingES3Entity entity) {
+	public static String bindingVolume(BindingVolumeEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Code", entity.getEs3Code());
+		params.put("volumeCode", entity.getVolumeCode());
 		params.put("ecsCode", entity.getEcsCode());
-		return HttpClientUtils.post(URL + "bindingES3/", params);
+		return HttpClientUtils.post(URL + "bindingVolume/", params);
 	}
 
-	public static String detachES3(DetachES3Entity entity) {
+	public static String deleteVolume(DeleteVolumeEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("es3Name", entity.getEs3Name());
-		params.put("ecsName", entity.getEcsName());
-		return HttpClientUtils.post(URL + "detachES3/", params);
+		params.put("volumeCode", entity.getVolumeCode());
+		return HttpClientUtils.post(URL + "deleteVolume/", params);
 	}
 
-	public static String deleteES3(DeleteES3Entity entity) {
+	/********** DNS ***********/
+
+	public static String describeDNS(DescribeDNSEntity entity) {
+		return HttpClientUtils.get(URL + "DNSResult/" + entity.getDnsCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createDNS(CreateDNSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
-		return HttpClientUtils.post(URL + "deleteES3/", params);
-	}
-
-	/***** ELB *****/
-
-	public static String describeELB(DescribeELBEntity entity) {
-		return HttpClientUtils.get(URL + "ELBResult/" + entity.getCode() + "/" + entity.getAccessKey());
-	}
-
-	public static String createELB(CreateELBEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("ecsCodes", entity.getEcsCodes());
+		params.put("domainName", entity.getDomainName());
+		params.put("eipCodes", entity.getEipCodes());
+		params.put("idc", entity.getIdcEnum().toString());
 		params.put("protocols", entity.getProtocols());
-		return HttpClientUtils.post(URL + "createELB/", params);
+		return HttpClientUtils.post(URL + "createDNS/", params);
 	}
 
-	public static String deleteELB(DeleteELBEntity entity) {
+	public static String deleteDNS(DeleteDNSEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("elbName", entity.getCode());
-		return HttpClientUtils.post(URL + "deleteELB/", params);
+		params.put("dnsCode", entity.getDnsCode());
+		return HttpClientUtils.post(URL + "deleteDNS/", params);
 	}
 
-	/***** EIP *****/
+	/******** Firewall ********/
+
+	public static String describeFirewallResult(DescribeFirewallEntity entity) {
+		return HttpClientUtils.get(URL + "FirewallResult/" + entity.getFirewallCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createFirewall(CreateFirewallEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("firewallName", entity.getFirewallName());
+		params.put("directions", entity.getDirections());
+		params.put("protocols", entity.getProtocols());
+		params.put("startPorts", entity.getStartPorts());
+		params.put("ipaddresses", entity.getIpaddresses());
+		params.put("rulesNames", entity.getRulesNames());
+		params.put("actions", entity.getActions());
+		params.put("idc", entity.getIdcEnum().toString());
+		params.put("endPorts", entity.getEndPorts());
+		params.put("accessKey", entity.getAccessKey());
+		return HttpClientUtils.post(URL + "createFirewall/", params);
+	}
+
+	public static String bindingFirewall(BindingFirewallEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("firewallCode", entity.getFirewallCode());
+		params.put("routerCode", entity.getRouterCode());
+		return HttpClientUtils.post(URL + "bindingFirewall/", params);
+	}
+
+	public static String deleteFirewall(DeleteFirewallEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("firewallCode", entity.getFirewallCode());
+		return HttpClientUtils.post(URL + "deleteFirewall/", params);
+	}
+
+	public static String updateFirewall(UpdateFirewallEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("firewallName", entity.getFirewallName());
+		params.put("firewallCode", entity.getFirewallCode());
+		return HttpClientUtils.post(URL + "updateFirewall/", params);
+	}
+
+	/********** EIP ***********/
 
 	public static String describeEIP(DescribeEIPEntity entity) {
-		return HttpClientUtils.get(URL + "EIPResult/" + entity.getCode() + "/" + entity.getAccessKey());
+		return HttpClientUtils.get(URL + "EIPResult/" + entity.getEipCode() + "/" + entity.getAccessKey());
 	}
 
 	public static String createEIP(CreateEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
 		params.put("isp", entity.getIspEnum().toString());
-		params.put("remark", entity.getRemark());
 		params.put("bandwidth", entity.getBandwidth());
 		params.put("protocols", entity.getProtocols());
 		params.put("sourcePorts", entity.getSourcePorts());
@@ -212,23 +285,23 @@ public class SDKClient {
 	public static String deleteEIP(DeleteEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
+		params.put("eipCode", entity.getEipCode());
 		return HttpClientUtils.post(URL + "deleteEIP/", params);
 	}
 
 	public static String bindingEIP(BindingEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
-		params.put("serviceCode", entity.getServiceCode());
+		params.put("eipCode", entity.getEipCode());
+		params.put("iaasCode", entity.getIaasCode());
 		return HttpClientUtils.post(URL + "bindingEIP/", params);
 	}
 
 	public static String unbindingEIP(UnbindingEIPEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("code", entity.getCode());
-		params.put("serviceCode", entity.getServiceCode());
+		params.put("eipCode", entity.getEipCode());
+		params.put("iaasCode", entity.getIaasCode());
 		return HttpClientUtils.post(URL + "unbindingEIP/", params);
 	}
 
@@ -240,103 +313,76 @@ public class SDKClient {
 		return HttpClientUtils.post(URL + "bindingEIPToRouter/", params);
 	}
 
-	/***** DNS *****/
+	/***** ELB *****/
 
-	public static String describeDNS(DescribeDNSEntity entity) {
-		return HttpClientUtils.get(URL + "DNSResult/" + entity.getCode() + "/" + entity.getAccessKey());
+	public static String describeELB(DescribeELBEntity entity) {
+		return HttpClientUtils.get(URL + "ELBResult/" + entity.getElbCode() + "/" + entity.getAccessKey());
 	}
 
-	public static String createDNS(CreateDNSEntity entity) {
+	public static String createELB(CreateELBEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("domainName", entity.getDomainName());
-		params.put("eipCodes", entity.getEipCodes());
-		params.put("remark", entity.getRemark());
+		params.put("elbName", entity.getElbName());
+		params.put("imageName", entity.getImageEnum().toString());
+		params.put("cpuNumber", entity.getCpuNumber().toString());
+		params.put("memoryMB", entity.getMemoryMB().toString());
 		params.put("idc", entity.getIdcEnum().toString());
+		return HttpClientUtils.post(URL + "createELB/", params);
+	}
+
+	public static String deleteELB(DeleteELBEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("elbCode", entity.getElbCode());
+		return HttpClientUtils.post(URL + "deleteELB/", params);
+	}
+
+	public static String updateELB(UpdateELBEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("elbName", entity.getElbName());
+		params.put("elbCode", entity.getElbCode());
+		return HttpClientUtils.post(URL + "updateELB/", params);
+	}
+
+	/******** ELBRule ********/
+
+	public static String describeELBRule(DescribeELBRuleEntity entity) {
+		return HttpClientUtils.get(URL + "ELBRuleResult/" + entity.getElbRuleCode() + "/" + entity.getAccessKey());
+	}
+
+	public static String createELBRule(CreateELBRuleEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("elbCode", entity.getElbCode());
+		params.put("ecsCodes", entity.getEcsCodes());
+		params.put("elbRuleName", entity.getElbRuleName());
 		params.put("protocols", entity.getProtocols());
-		return HttpClientUtils.post(URL + "createDNS/", params);
+		return HttpClientUtils.post(URL + "createELBRule/", params);
 	}
 
-	public static String deleteDNS(DeleteDNSEntity entity) {
+	public static String createELBRule(UpdateELBRuleEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("domainName", entity.getCode());
-		return HttpClientUtils.post(URL + "deleteDNS/", params);
+		params.put("elbRuleName", entity.getElbRuleName());
+		params.put("elbRuleCode", entity.getElbRuleCode());
+		return HttpClientUtils.post(URL + "updateELBRule/", params);
 	}
 
-	/***** FirewallService *****/
-
-	public static String describeFirewallServiceResult(DescribeDNSEntity entity) {
-		return HttpClientUtils.get(URL + "FirewallServiceResult/" + entity.getCode() + "/" + entity.getAccessKey());
-	}
-
-	public static String createFirewallService(CreateFirewallServiceEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("firewallServiceName", entity.getFirewallServiceName());
-		params.put("directions", entity.getDirections());
-		params.put("protocols", entity.getProtocols());
-		params.put("startPorts", entity.getStartPorts());
-		params.put("ipaddresses", entity.getIpaddresses());
-		params.put("rulesNames", entity.getRulesNames());
-		params.put("actions", entity.getActions());
-		params.put("idc", entity.getIdcEnum().toString());
-		params.put("endPorts", entity.getEndPorts());
-		params.put("accessKey", entity.getAccessKey());
-		return HttpClientUtils.post(URL + "createFirewallService/", params);
-	}
-
-	public static String bindingFirewallService(BindingFirewallServiceEntity entity) {
+	public static String deleteELBRule(DeleteELBRuleEntity entity) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("accessKey", entity.getAccessKey());
-		params.put("firewallServiceCode", entity.getFirewallServiceCode());
-		params.put("routerCode", entity.getRouterCode());
-		return HttpClientUtils.post(URL + "bindingFirewallService/", params);
+		params.put("elbRuleCode", entity.getElbRuleCode());
+		return HttpClientUtils.post(URL + "deleteELBRule/", params);
 	}
 
-	/***** TAG *****/
-
-	public static String describeTag(DescribeTagEntity entity) {
-		return HttpClientUtils.get(URL + "TagResult/" + entity.getCode() + "/" + entity.getAccessKey());
-	}
-
-	public static String createTag(CreateTagEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("tagName", entity.getTagName());
-		params.put("parentTag", entity.getParentTag());
-		return HttpClientUtils.post(URL + "createTag/", params);
-	}
-
-	public static String deleteTag(DeleteTagEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("tagName", entity.getCode());
-		return HttpClientUtils.post(URL + "deleteTag/", params);
-	}
-
-	public static String associateTag(AssociateTagEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("tagName", entity.getTagName());
-		params.put("serviceId", entity.getServiceId());
-		return HttpClientUtils.post(URL + "associateTag/", params);
-	}
-
-	public static String dissociateTag(DissociateTagEntity entity) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessKey", entity.getAccessKey());
-		params.put("tagName", entity.getTagName());
-		params.put("serviceId", entity.getServiceId());
-		return HttpClientUtils.post(URL + "dssociateTag/", params);
-	}
-
-	/***** VMRC *****/
+	/******** VMRC ********/
 
 	public static String VMRCResult(DescribeVMRCEntity entity) {
 		return HttpClientUtils.get(URL + "VMRCResult/" + entity.getEcsCode() + "/" + entity.getAccessKey());
 	}
 
-	/***** Zabbix *****/
+	/******** Zabbix ********/
 
 	public static String monitorECS(MonitorECSEntity entity) {
 		return HttpClientUtils.get(URL + "currentData/" + entity.getEcsCode() + "/" + entity.getEcsMonitorItemEnum()

@@ -1,11 +1,11 @@
 package com.sobey.sdk.entity;
 
-public class DescribeRouterEntity {
+public class DeleteRouterEntity {
 
 	private String accessKey;
 	private String routerCode;
 
-	public DescribeRouterEntity(String accessKey, String routerCode) {
+	public DeleteRouterEntity(String accessKey, String routerCode) {
 		super();
 		this.accessKey = accessKey;
 		this.routerCode = routerCode;

@@ -7,23 +7,21 @@ public class CreateRouterEntity {
 
 	private String accessKey;
 	private Integer cpuNumber;
-	private String firewallServiceCode;
+	private String firewallCode;
 	private IDCEnum idcEnum;
+	private RouterImageEnum imageEnum;
 	private Integer memoryMB;
-	private String remark;
-	private RouterImageEnum routerImageEnum;
 	private String routerName;
 
-	public CreateRouterEntity(String accessKey, Integer cpuNumber, String firewallServiceCode, IDCEnum idcEnum,
-			Integer memoryMB, String remark, RouterImageEnum routerImageEnum, String routerName) {
+	public CreateRouterEntity(String accessKey, Integer cpuNumber, String firewallCode, IDCEnum idcEnum,
+			RouterImageEnum imageEnum, Integer memoryMB, String routerName) {
 		super();
 		this.accessKey = accessKey;
 		this.cpuNumber = cpuNumber;
-		this.firewallServiceCode = firewallServiceCode;
+		this.firewallCode = firewallCode;
 		this.idcEnum = idcEnum;
+		this.imageEnum = imageEnum;
 		this.memoryMB = memoryMB;
-		this.remark = remark;
-		this.routerImageEnum = routerImageEnum;
 		this.routerName = routerName;
 	}
 
@@ -35,24 +33,20 @@ public class CreateRouterEntity {
 		return cpuNumber;
 	}
 
-	public String getFirewallServiceCode() {
-		return firewallServiceCode;
+	public String getFirewallCode() {
+		return firewallCode;
 	}
 
 	public IDCEnum getIdcEnum() {
 		return idcEnum;
 	}
 
+	public RouterImageEnum getImageEnum() {
+		return imageEnum;
+	}
+
 	public Integer getMemoryMB() {
 		return memoryMB;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public RouterImageEnum getRouterImageEnum() {
-		return routerImageEnum;
 	}
 
 	public String getRouterName() {
@@ -67,24 +61,20 @@ public class CreateRouterEntity {
 		this.cpuNumber = cpuNumber;
 	}
 
-	public void setFirewallServiceCode(String firewallServiceCode) {
-		this.firewallServiceCode = firewallServiceCode;
+	public void setFirewallCode(String firewallCode) {
+		this.firewallCode = firewallCode;
 	}
 
 	public void setIdcEnum(IDCEnum idcEnum) {
 		this.idcEnum = idcEnum;
 	}
 
+	public void setImageEnum(RouterImageEnum imageEnum) {
+		this.imageEnum = imageEnum;
+	}
+
 	public void setMemoryMB(Integer memoryMB) {
 		this.memoryMB = memoryMB;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	public void setRouterImageEnum(RouterImageEnum routerImageEnum) {
-		this.routerImageEnum = routerImageEnum;
 	}
 
 	public void setRouterName(String routerName) {

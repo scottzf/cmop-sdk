@@ -3,27 +3,28 @@ package com.sobey.sdk.entity;
 public class DescribeDNSEntity {
 
 	private String accessKey;
-	private String code;
+	private String dnsCode;
 
-	public DescribeDNSEntity(String accessKey, String code) {
+	public DescribeDNSEntity(String accessKey, String dnsCode) {
 		super();
 		this.accessKey = accessKey;
-		this.code = code;
+		this.dnsCode = dnsCode;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
-	public String getCode() {
-		return code;
+	public String getDnsCode() {
+		return dnsCode;
 	}
 
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setDnsCode(String dnsCode) {
+		this.dnsCode = dnsCode;
 	}
+
 }

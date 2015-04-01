@@ -2,28 +2,28 @@ package com.sobey.sdk.entity;
 
 import com.sobey.sdk.constant.IDCEnum;
 
-public class CreateFirewallServiceEntity {
+public class CreateFirewallEntity {
 
 	private String accessKey;
 	private String actions;
 	private String directions;
 	private String endPorts;
-	private String firewallServiceName;
+	private String firewallName;
 	private IDCEnum idcEnum;
 	private String ipaddresses;
 	private String protocols;
 	private String rulesNames;
 	private String startPorts;
 
-	public CreateFirewallServiceEntity(String accessKey, String actions, String directions, String endPorts,
-			String firewallServiceName, IDCEnum idcEnum, String ipaddresses, String protocols, String rulesNames,
+	public CreateFirewallEntity(String accessKey, String actions, String directions, String endPorts,
+			String firewallName, IDCEnum idcEnum, String ipaddresses, String protocols, String rulesNames,
 			String startPorts) {
 		super();
 		this.accessKey = accessKey;
 		this.actions = actions;
 		this.directions = directions;
 		this.endPorts = endPorts;
-		this.firewallServiceName = firewallServiceName;
+		this.firewallName = firewallName;
 		this.idcEnum = idcEnum;
 		this.ipaddresses = ipaddresses;
 		this.protocols = protocols;
@@ -63,12 +63,12 @@ public class CreateFirewallServiceEntity {
 		this.endPorts = endPorts;
 	}
 
-	public String getFirewallServiceName() {
-		return firewallServiceName;
+	public String getFirewallName() {
+		return firewallName;
 	}
 
-	public void setFirewallServiceName(String firewallServiceName) {
-		this.firewallServiceName = firewallServiceName;
+	public void setFirewallName(String firewallName) {
+		this.firewallName = firewallName;
 	}
 
 	public IDCEnum getIdcEnum() {

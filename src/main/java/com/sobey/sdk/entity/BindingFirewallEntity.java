@@ -1,16 +1,16 @@
 package com.sobey.sdk.entity;
 
-public class BindingFirewallServiceEntity {
+public class BindingFirewallEntity {
 
 	private String accessKey;
 	private String routerCode;
-	private String firewallServiceCode;
+	private String firewallCode;
 
-	public BindingFirewallServiceEntity(String accessKey, String routerCode, String firewallServiceCode) {
+	public BindingFirewallEntity(String accessKey, String routerCode, String firewallCode) {
 		super();
 		this.accessKey = accessKey;
 		this.routerCode = routerCode;
-		this.firewallServiceCode = firewallServiceCode;
+		this.firewallCode = firewallCode;
 	}
 
 	public String getAccessKey() {
@@ -29,12 +29,12 @@ public class BindingFirewallServiceEntity {
 		this.routerCode = routerCode;
 	}
 
-	public String getFirewallServiceCode() {
-		return firewallServiceCode;
+	public String getFirewallCode() {
+		return firewallCode;
 	}
 
-	public void setFirewallServiceCode(String firewallServiceCode) {
-		this.firewallServiceCode = firewallServiceCode;
+	public void setFirewallCode(String firewallCode) {
+		this.firewallCode = firewallCode;
 	}
 
 }

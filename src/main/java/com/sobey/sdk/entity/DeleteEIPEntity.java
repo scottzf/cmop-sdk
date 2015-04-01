@@ -3,12 +3,12 @@ package com.sobey.sdk.entity;
 public class DeleteEIPEntity {
 
 	private String accessKey;
-	private String code;
+	private String eipCode;
 
-	public DeleteEIPEntity(String accessKey, String code) {
+	public DeleteEIPEntity(String accessKey, String eipCode) {
 		super();
 		this.accessKey = accessKey;
-		this.code = code;
+		this.eipCode = eipCode;
 	}
 
 	public String getAccessKey() {
@@ -19,12 +19,12 @@ public class DeleteEIPEntity {
 		this.accessKey = accessKey;
 	}
 
-	public String getCode() {
-		return code;
+	public String getEipCode() {
+		return eipCode;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setEipCode(String eipCode) {
+		this.eipCode = eipCode;
 	}
 
 }

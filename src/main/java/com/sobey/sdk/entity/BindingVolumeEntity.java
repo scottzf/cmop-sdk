@@ -1,16 +1,16 @@
 package com.sobey.sdk.entity;
 
-public class BindingES3Entity {
+public class BindingVolumeEntity {
 
 	private String accessKey;
 	private String ecsCode;
-	private String es3Code;
+	private String volumeCode;
 
-	public BindingES3Entity(String accessKey, String ecsCode, String es3Code) {
+	public BindingVolumeEntity(String accessKey, String ecsCode, String volumeCode) {
 		super();
 		this.accessKey = accessKey;
 		this.ecsCode = ecsCode;
-		this.es3Code = es3Code;
+		this.volumeCode = volumeCode;
 	}
 
 	public String getAccessKey() {
@@ -21,8 +21,8 @@ public class BindingES3Entity {
 		return ecsCode;
 	}
 
-	public String getEs3Code() {
-		return es3Code;
+	public String getVolumeCode() {
+		return volumeCode;
 	}
 
 	public void setAccessKey(String accessKey) {
@@ -33,8 +33,8 @@ public class BindingES3Entity {
 		this.ecsCode = ecsCode;
 	}
 
-	public void setEs3Code(String es3Code) {
-		this.es3Code = es3Code;
+	public void setVolumeCode(String volumeCode) {
+		this.volumeCode = volumeCode;
 	}
 
 }

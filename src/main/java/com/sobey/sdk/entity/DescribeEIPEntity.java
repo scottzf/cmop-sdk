@@ -3,28 +3,28 @@ package com.sobey.sdk.entity;
 public class DescribeEIPEntity {
 
 	private String accessKey;
-	private String code;
+	private String eipCode;
 
-	public DescribeEIPEntity(String accessKey, String code) {
+	public DescribeEIPEntity(String accessKey, String eipCode) {
 		super();
 		this.accessKey = accessKey;
-		this.code = code;
+		this.eipCode = eipCode;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
-	public String getCode() {
-		return code;
+	public String getEipCode() {
+		return eipCode;
 	}
 
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setEipCode(String eipCode) {
+		this.eipCode = eipCode;
 	}
 
 }

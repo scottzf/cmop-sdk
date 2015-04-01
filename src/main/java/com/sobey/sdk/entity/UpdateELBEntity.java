@@ -1,14 +1,16 @@
 package com.sobey.sdk.entity;
 
-public class DeleteELBEntity {
+public class UpdateELBEntity {
 
 	private String accessKey;
 	private String elbCode;
+	private String elbName;
 
-	public DeleteELBEntity(String accessKey, String elbCode) {
+	public UpdateELBEntity(String accessKey, String elbCode, String elbName) {
 		super();
 		this.accessKey = accessKey;
 		this.elbCode = elbCode;
+		this.elbName = elbName;
 	}
 
 	public String getAccessKey() {
@@ -19,12 +21,20 @@ public class DeleteELBEntity {
 		return elbCode;
 	}
 
+	public String getElbName() {
+		return elbName;
+	}
+
 	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
 	}
 
 	public void setElbCode(String elbCode) {
 		this.elbCode = elbCode;
+	}
+
+	public void setElbName(String elbName) {
+		this.elbName = elbName;
 	}
 
 }
