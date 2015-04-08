@@ -39,6 +39,7 @@ import com.sobey.sdk.entity.DestroyECSEntity;
 import com.sobey.sdk.entity.MonitorECSEntity;
 import com.sobey.sdk.entity.PowerOpsECSEntity;
 import com.sobey.sdk.entity.UnbindingEIPEntity;
+import com.sobey.sdk.entity.UnbindingEIPToRouterEntity;
 import com.sobey.sdk.entity.UpdateELBEntity;
 import com.sobey.sdk.entity.UpdateELBRuleEntity;
 import com.sobey.sdk.entity.UpdateFirewallEntity;
@@ -311,6 +312,14 @@ public class SDKClient {
 		params.put("eipCode", entity.getEipCode());
 		params.put("routerCode", entity.getRouterCode());
 		return HttpClientUtils.post(URL + "bindingEIPToRouter/", params);
+	}
+
+	public static String unbindingEIPToRouter(UnbindingEIPToRouterEntity entity) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("accessKey", entity.getAccessKey());
+		params.put("eipCode", entity.getEipCode());
+		params.put("routerCode", entity.getRouterCode());
+		return HttpClientUtils.post(URL + "unbindingEIPToRouter/", params);
 	}
 
 	/***** ELB *****/
