@@ -8,6 +8,8 @@ public enum ECSImageEnum {
 
 	Windows_7("Windows 7  64  40G MOD"),
 
+	Windows_7_HaiLei("Win7_X64_HaiLei_MOD"),
+
 	MediaInstance("Windows 7 GPU"),
 
 	MediaInstance_Application("Windows 7 GPU Application");
